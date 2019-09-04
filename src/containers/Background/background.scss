@@ -1,0 +1,13 @@
+@import '../../assets/scss/colors';
+.background-wrapper {
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  position: relative;
+}
+.background-day {
+  background: linear-gradient(180deg, #fcf8f1, #fcd1cb) center no-repeat;
+}
+.background-night {
+  background: linear-gradient(180deg, #39346a, #a9dff7) center no-repeat;
+}

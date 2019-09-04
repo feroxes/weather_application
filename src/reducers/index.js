@@ -1,7 +1,7 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
-// import authors from './test';
+import background from './background';
 
 export default combineReducers({
-    // test,
+  background
 });

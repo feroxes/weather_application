@@ -1,0 +1,47 @@
+@import '../../assets/scss/colors';
+.cloud {
+  width: 12vw;
+  height: 12vw;
+  border-radius: 100%;
+  position: absolute;
+  &:before {
+    content: '';
+    display: block;
+    width: 9vw;
+    height: 9vw;
+    border-radius: 100%;
+    position: absolute;
+    top: 2vw;
+    right: 8vw;
+  }
+  &:after {
+    content: '';
+    display: block;
+    width: 9vw;
+    height: 9vw;
+    border-radius: 100%;
+    position: absolute;
+    top: 2vw;
+    left: 8vw;
+  }
+}
+
+.cloud-day {
+  background-color: $white;
+  &:after {
+    background-color: $white;
+  }
+  &:before {
+    background-color: $white;
+  }
+}
+
+.cloud-night {
+  background-color: $light-blue;
+  &:after {
+    background-color: $light-blue;
+  }
+  &:before {
+    background-color: $light-blue;
+  }
+}
