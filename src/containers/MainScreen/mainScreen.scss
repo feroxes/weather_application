@@ -1,0 +1,68 @@
+@import "../../assets/scss/colors";
+.main-screen-wrapper{
+  height: calc(80vh - 120px);
+  min-height: calc(460px - 120px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: $white;
+  .screen-weather {
+    display: flex;
+    margin: 30px;
+    .screen-weather-icon {
+      height: auto;
+      display: flex;
+      align-items: flex-end;
+      margin-right: 10px;
+      img {
+        height: 48px;
+      }
+    }
+    .screen-weather-info {
+      display: flex;
+      flex-direction: column;
+      .weather-info-location {
+        font-size: 52px;
+        font-weight: 400;
+      }
+      .weather-info-temperature {
+        font-size: 62px;
+        font-weight: 300;
+        line-height: 36px;
+        margin-top: 10px;
+        sup {
+          font-size: 34px;
+        }
+      }
+    }
+  }
+  .screen-forecast {
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    .forecast-item {
+      min-width: 125px;
+      .forecast-date {
+        font-weight: 200;
+      }
+      .forecast-precipitations {
+        font-size: 22px;
+        margin: 7px 0;
+      }
+      .forecast-temperature {
+        display: flex;
+        align-items: flex-end;
+        height: 30px;
+        img {
+          width: 30px;
+          margin-right: 7px;
+        }
+        p {
+          font-size: 32px;
+          line-height: 20px;
+          font-weight: 300;
+        }
+      }
+    }
+  }
+}

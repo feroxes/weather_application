@@ -1,0 +1,21 @@
+.screen-wrapper {
+  width: 50vh;
+  height: 80vh;
+  min-width: 290px;
+  min-height: 460px;
+  padding: 30px;
+  border-radius: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.screen-wrapper-day {
+  background: url("../../assets/images/screen/screen-background-day-2.png") center no-repeat;
+  background-size: 100%;
+}
+.screen-wrapper-night {
+  background: url("../../assets/images/screen/screen-background-night-2.png") center no-repeat;
+  background-size: 100%;
+}

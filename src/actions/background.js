@@ -3,6 +3,6 @@ export default () => {
   const dayTime = date.getHours() >= 20 && date.getHours() <= 4 ? 'night' : 'day';
   return {
     type: 'SET_DAY_TIME',
-    payload: dayTime
+    payload: 'night'
   };
 };

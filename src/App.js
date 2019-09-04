@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import setDayTime from './actions/background';
+
 import Background from './containers/Background';
+import ScreenWrapper from './components/ScreenWrapper';
+import MainScreen from './containers/MainScreen';
+
+import Carousel from 'nuka-carousel';
 import './assets/scss/index.scss';
 
 class App extends Component {
@@ -16,6 +21,19 @@ class App extends Component {
         {dayTime ? (
           <div className="App">
             <Background dayTime={dayTime} />
+            <ScreenWrapper dayTime={dayTime}>
+              <Carousel
+                className="carousel"
+                slideIndex={1}
+                enableKeyboardControls={true}
+                renderCenterLeftControls={() => <button style={{ display: 'none' }} />}
+                renderCenterRightControls={() => <button style={{ display: 'none' }} />}
+              >
+                <MainScreen />
+                <MainScreen />
+                <MainScreen />
+              </Carousel>
+            </ScreenWrapper>
           </div>
         ) : (
           'Loading...'

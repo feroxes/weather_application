@@ -1,0 +1,12 @@
+* {
+  box-sizing: border-box;
+  font-family: PFDinTextPro, sans-serif;
+}
+
+.App {
+  position: relative;
+  overflow: hidden;
+  .carousel {
+    height: 100% !important;
+  }
+}
