@@ -23,11 +23,12 @@ function MainScreen({ currentWeather, forecast }) {
     const options = { day: 'numeric', month: 'long' };
     return currentDate.toLocaleDateString('en-GB', options);
   };
+  const { icon } = currentWeather;
   return (
     <div className="main-screen-wrapper">
       <div className="screen-weather">
         <div className="screen-weather-icon">
-          <img src={require('../../assets/images/icons/sun.png')} alt="icon" />
+          <img src={require(`../../assets/images/icons/${icon}.png`)} alt="icon" />
         </div>
         <div className="screen-weather-info">
           <h2 className="weather-info-location">Kyiv</h2>
@@ -44,7 +45,7 @@ function MainScreen({ currentWeather, forecast }) {
                   <p className="forecast-date">{formatDate(item.time)}</p>
                   <p className="forecast-precipitations">{item.precipType}</p>
                   <div className="forecast-temperature">
-                    <img src={require('../../assets/images/icons/clouds.png')} alt="icon" />
+                    <img src={require(`../../assets/images/icons/${item.icon}.png`)} alt="icon" />
                     <p> {Math.round(item.apparentTemperatureMax)} °</p>
                   </div>
                 </div>

@@ -20,16 +20,16 @@ function DetailsScreen({ dayTime, currentWeather }) {
           <p>{summary}</p>
           <div className="details-block">
             <div className="details-icon">
-              <img src={require('../../assets/images/icons/rain.png')} alt="Weather icon" />
+              <img src={require(`../../assets/images/icons/${icon}.png`)} alt="Weather icon" />
             </div>
             <div className="details-info">
               <div className="details-info-item">
                 <p>Humidity</p>
-                <span>{humidity * 100} %</span>
+                <span>{Math.round(humidity * 100)} %</span>
               </div>
               <div className="details-info-item">
                 <p>Cloudiness</p>
-                <span>{cloudCover * 100} %</span>
+                <span>{Math.round(cloudCover * 100)} %</span>
               </div>
               <div className="details-info-item">
                 <p>Visibility</p>
