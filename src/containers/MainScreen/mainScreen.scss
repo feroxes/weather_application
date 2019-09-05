@@ -1,8 +1,9 @@
 @import "../../assets/scss/colors";
+@import "../../assets/scss/mixin";
 .main-screen-wrapper{
-  height: calc(80vh - 120px);
-  min-height: calc(460px - 120px);
+  @include screen-size;
   display: flex;
+  padding: 30px 30px 60px 30px;
   flex-direction: column;
   justify-content: space-between;
   color: $white;

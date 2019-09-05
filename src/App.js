@@ -4,6 +4,8 @@ import setDayTime from './actions/background';
 
 import Background from './containers/Background';
 import ScreenWrapper from './components/ScreenWrapper';
+
+import SearchScreen from "./containers/SearchScreen";
 import MainScreen from './containers/MainScreen';
 
 import Carousel from 'nuka-carousel';
@@ -24,12 +26,12 @@ class App extends Component {
             <ScreenWrapper dayTime={dayTime}>
               <Carousel
                 className="carousel"
-                slideIndex={1}
+                slideIndex={0}
                 enableKeyboardControls={true}
                 renderCenterLeftControls={() => <button style={{ display: 'none' }} />}
                 renderCenterRightControls={() => <button style={{ display: 'none' }} />}
               >
-                <MainScreen />
+                <SearchScreen />
                 <MainScreen />
                 <MainScreen />
               </Carousel>

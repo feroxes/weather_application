@@ -1,3 +1,4 @@
+@import "mixin";
 * {
   box-sizing: border-box;
   font-family: PFDinTextPro, sans-serif;
@@ -9,4 +10,27 @@
   .carousel {
     height: 100% !important;
   }
+}
+
+.blur-background {
+  position: relative;
+  border-radius: 30px;
+  overflow: hidden;
+  @include screen-size;
+  display: flex;
+  flex-direction: column;
+  z-index: 5;
+}
+
+.blur-background:before {
+  position: absolute;
+  width: 600px;
+  height: 900px;
+  top: -25px;
+  left: -50px;
+  content: '';
+  background: url("../../assets/images/screen/screen-background-day.png") center no-repeat;
+  background-size: 100%;
+  filter: blur(30px);
+  z-index: 3;
 }
