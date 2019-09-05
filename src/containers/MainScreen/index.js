@@ -1,77 +1,56 @@
 import React from 'react';
 import './mainScreen.scss';
 
-function MainScreen() {
+// MAP_CONDITION = {
+//     'clear-day': 'sunny',
+//     'clear-night': 'clear-night',
+//     'rain': 'rainy',
+//     'snow': 'snowy',
+//     'sleet': 'snowy-rainy',
+//     'wind': 'windy',
+//     'fog': 'fog',
+//     'cloudy': 'cloudy',
+//     'partly-cloudy-day': 'partlycloudy',
+//     'partly-cloudy-night': 'partlycloudy',
+//     'hail': 'hail',
+//     'thunderstorm': 'lightning',
+//     'tornado': None,
+// }
+
+function MainScreen({ currentWeather, forecast }) {
+  const formatDate = date => {
+    const currentDate = new Date(date);
+    const options = { day: 'numeric', month: 'long' };
+    return currentDate.toLocaleDateString('en-GB', options);
+  };
   return (
     <div className="main-screen-wrapper">
       <div className="screen-weather">
         <div className="screen-weather-icon">
-          <img src={require('../../assets/images/icons/sun.png')} />
+          <img src={require('../../assets/images/icons/sun.png')} alt="icon" />
         </div>
         <div className="screen-weather-info">
           <h2 className="weather-info-location">Kyiv</h2>
           <p className="weather-info-temperature">
-            19 °<sup>C</sup>
+            {Math.round(currentWeather.apparentTemperature)} °<sup>C</sup>
           </p>
         </div>
       </div>
       <div className="screen-forecast">
-        <div className="forecast-item">
-          <p className="forecast-date">05 September</p>
-          <p className="forecast-precipitations">Rain</p>
-          <div className="forecast-temperature">
-            <img src={require('../../assets/images/icons/clouds.png')} />
-            <p> 15 °</p>
-          </div>
-        </div>
-        <div className="forecast-item">
-          <p className="forecast-date">06 September</p>
-          <p className="forecast-precipitations">Cloud-sun</p>
-          <div className="forecast-temperature">
-            <img src={require('../../assets/images/icons/sun.png')} />
-            <p> 15 °</p>
-          </div>
-        </div>
-        <div className="forecast-item">
-          <p className="forecast-date">07 September</p>
-          <p className="forecast-precipitations">Cloud</p>
-          <div className="forecast-temperature">
-            <img src={require('../../assets/images/icons/rain.png')} />
-            <p> 15 °</p>
-          </div>
-        </div>
-        <div className="forecast-item">
-          <p className="forecast-date">08 September</p>
-          <p className="forecast-precipitations">Sun</p>
-          <div className="forecast-temperature">
-            <img src={require('../../assets/images/icons/partly-cloudy-day.png')} />
-            <p> 15 °</p>
-          </div>
-        </div>
-        <div className="forecast-item">
-          <p className="forecast-date">09 September</p>
-          <p className="forecast-precipitations">Rain</p>
-          <div className="forecast-temperature">
-            <img src={require('../../assets/images/icons/rain.png')} />
-            <p> 15 °</p>
-          </div>
-        </div>
-        <div className="forecast-item">
-          <p className="forecast-date">10 September</p>
-          <p className="forecast-precipitations">Rain</p>
-          <div className="forecast-temperature">
-            <img src={require('../../assets/images/icons/clouds.png')} />
-            <p> 15 °</p>
-          </div>
-        </div>
-        <div className="forecast-item">
-          <p className="forecast-date">11 September</p>
-          <p className="forecast-precipitations">Cloud-sun</p>
-          <div className="forecast-temperature">
-            <img src={require('../../assets/images/icons/sun.png')} />
-            <p> 15 °</p>
-          </div>
-        </div>
+        {forecast
+          ? forecast.map((item, index) => {
+              return (
+                <div className="forecast-item" key={index}>
+                  <p className="forecast-date">{formatDate(item.time)}</p>
+                  <p className="forecast-precipitations">{item.precipType}</p>
+                  <div className="forecast-temperature">
+                    <img src={require('../../assets/images/icons/clouds.png')} alt="icon" />
+                    <p> {Math.round(item.apparentTemperatureMax)} °</p>
+                  </div>
+                </div>
+              );
+            })
+          : 'Loading...'}
       </div>
     </div>
   );

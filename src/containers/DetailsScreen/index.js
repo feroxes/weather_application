@@ -1,32 +1,43 @@
 import React from 'react';
 import './detailsScreen.scss';
 
-function DetailsScreen({ dayTime }) {
+function DetailsScreen({ dayTime, currentWeather }) {
+  const {
+    cloudCover,
+    humidity,
+    icon,
+    pressure,
+    summary,
+    uvIndex,
+    visibility,
+    windSpeed
+  } = currentWeather;
   return (
     <div className={`blur-background blur-background-${dayTime}`}>
       <div className="details-screen-wrapper">
         <section className="details-section">
           <h2 className="details-section-title">Details</h2>
+          <p>{summary}</p>
           <div className="details-block">
             <div className="details-icon">
               <img src={require('../../assets/images/icons/rain.png')} alt="Weather icon" />
             </div>
             <div className="details-info">
               <div className="details-info-item">
-                <p>Feels like</p>
-                <span>3 °</span>
+                <p>Humidity</p>
+                <span>{humidity * 100} %</span>
               </div>
               <div className="details-info-item">
-                <p>Humidity</p>
-                <span>33 %</span>
+                <p>Cloudiness</p>
+                <span>{cloudCover * 100} %</span>
               </div>
               <div className="details-info-item">
                 <p>Visibility</p>
-                <span>10 km</span>
+                <span>{Math.round(visibility)} km</span>
               </div>
               <div className="details-info-item">
                 <p>UV Index</p>
-                <span>Low 1</span>
+                <span>{uvIndex}</span>
               </div>
             </div>
           </div>
@@ -70,11 +81,11 @@ function DetailsScreen({ dayTime }) {
                 src={require('../../assets/images/icons/windmill-mid.gif')}
                 alt="Mill"
               />
-              <p className="wind-speed">6 mph</p>
+              <p className="wind-speed">{windSpeed} mph</p>
             </div>
             <div className="pressure">
               <p>Barometer</p>
-              <span>29.5 inches</span>
+              <span>{pressure} inches</span>
             </div>
           </div>
         </section>
