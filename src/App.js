@@ -31,9 +31,9 @@ class App extends Component {
                 renderCenterLeftControls={() => <button style={{ display: 'none' }} />}
                 renderCenterRightControls={() => <button style={{ display: 'none' }} />}
               >
-                <SearchScreen />
+                <SearchScreen dayTime={dayTime} />
                 <MainScreen />
-                <DetailsScreen />
+                <DetailsScreen dayTime={dayTime} />
               </Carousel>
             </ScreenWrapper>
           </div>

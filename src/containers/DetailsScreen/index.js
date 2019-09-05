@@ -1,9 +1,9 @@
 import React from 'react';
 import './detailsScreen.scss';
 
-function DetailsScreen() {
+function DetailsScreen({ dayTime }) {
   return (
-    <div className="blur-background">
+    <div className={`blur-background blur-background-${dayTime}`}>
       <div className="details-screen-wrapper">
         <section className="details-section">
           <h2 className="details-section-title">Details</h2>
@@ -70,7 +70,7 @@ function DetailsScreen() {
                 src={require('../../assets/images/icons/windmill-mid.gif')}
                 alt="Mill"
               />
-              <p className='wind-speed'>6 mph</p>
+              <p className="wind-speed">6 mph</p>
             </div>
             <div className="pressure">
               <p>Barometer</p>
