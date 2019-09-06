@@ -31,9 +31,6 @@
   }
 }
 .star-night {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
   box-shadow: 15px 15px 0 0 #e6eef2;
   transform: rotate(90deg);
 }
@@ -44,4 +41,17 @@
 .screen-wrapper-night {
   background: url("../../assets/images/screen/screen-background-night-2.png") center no-repeat;
   background-size: 100%;
+}
+@media screen and (max-width: 425px){
+  .star {
+    width: 100px;
+    height: 100px;
+    right: 20px;
+    .star-day {
+      .inside-circle {
+        width: 65px;
+        height: 65px;
+      }
+    }
+  }
 }

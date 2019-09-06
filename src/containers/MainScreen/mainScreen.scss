@@ -65,3 +65,30 @@
     }
   }
 }
+@media screen and (max-width: 425px){
+  .main-screen-wrapper{
+    .screen-weather {
+      margin: 0;
+    }
+    .screen-forecast {
+      .forecast-item {
+        min-width: 100px;
+        .forecast-date{
+          font-size: 14px;
+        }
+        .forecast-precipitations {
+          font-size: 16px;
+        }
+        .forecast-temperature {
+          img {
+            width: 30px;
+          }
+          p {
+            font-size: 26px;
+            line-height: 14px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -73,3 +73,18 @@
     }
   }
 }
+@media screen and (max-width: 425px){
+  .details-screen-wrapper {
+    padding: 20px;
+    font-size: 14px;
+    .details-section{
+      .details-section-title {
+        font-size: 24px;
+        margin-bottom: 5px;
+      }
+      &:not(:first-child) {
+        margin-top: 30px;
+      }
+    }
+  }
+}
