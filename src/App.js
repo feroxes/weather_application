@@ -76,6 +76,7 @@ class App extends Component {
               ref={item => (this.eagle = item)}
               className="eagle"
               src={require('./assets/images/screen/eagle.gif')}
+              alt='Eagle'
             />
             <Background dayTime={dayTime} />
             <ScreenWrapper dayTime={dayTime}>

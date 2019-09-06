@@ -65,7 +65,14 @@ class SearchScreen extends Component {
               : ''}
           </div>
         </div>
-        <a href='https://darksky.net/poweredby/' target='_blank'>Powered by Dark Sky</a>
+        <a
+          className="powered"
+          href="https://darksky.net/poweredby/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Powered by Dark Sky
+        </a>
       </div>
     );
   }

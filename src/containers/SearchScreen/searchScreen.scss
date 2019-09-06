@@ -41,3 +41,12 @@
     }
   }
 }
+.powered {
+  position: absolute;
+  color: $white;
+  z-index: 410;
+  bottom: 25px;
+  font-size: 10px;
+  left: 50%;
+  transform: translate(-50%);
+}
