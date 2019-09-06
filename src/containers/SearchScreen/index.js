@@ -32,7 +32,6 @@ class SearchScreen extends Component {
     });
     onSetCity(item);
     setScreen(1);
-    console.log("asdasdasdasd", setScreen);
   };
 
   render() {
