@@ -17,22 +17,47 @@ import Carousel from 'nuka-carousel';
 import './assets/scss/index.scss';
 
 class App extends Component {
-  async componentDidMount() {
-    const { onSetDayTime, onSetCurrentWeather, onSetForecast } = this.props;
+  constructor(props) {
+    super(props);
+    this.state = {
+      slideIndex: 1
+    };
+  }
 
+  componentDidMount() {
+    this.getForecast();
+  }
+
+  getForecast = async () => {
+    const { onSetDayTime, onSetCurrentWeather, onSetForecast, searchResult } = this.props;
     onSetDayTime();
     const API_KEY = '34e9e8865eb515573550395b2b961dff';
     const proxy = 'https://cors-anywhere.herokuapp.com/';
     const ENDPOINT = 'https://api.darksky.net/forecast/';
+    const { lat, lng } = this.getCityCoordinates();
 
-    const forecast = await axios.get(`${proxy}${ENDPOINT}${API_KEY}/50.450, 30.5234?units=si`);
-
-    onSetCurrentWeather(forecast.data.currently);
+    const forecast = await axios.get(`${proxy}${ENDPOINT}${API_KEY}/${lat}, ${lng}?units=si`);
+    onSetCurrentWeather({ ...forecast.data.currently, ...searchResult.selectedCity });
     onSetForecast(forecast.data.daily.data);
-  }
+  };
+
+  getCityCoordinates = () => {
+    if (this.props.searchResult.selectedCity) {
+      let { lat, lng } = this.props.searchResult.selectedCity;
+      return { lat, lng };
+    } else {
+      return { lat: '50.450', lng: '30.5234' };
+    }
+  };
+
+  setScreen = slideIndex => {
+    this.setState({ slideIndex });
+  };
+
   render() {
     const { dayTime } = this.props.background;
     const { forecast, currentWeather } = this.props.forecast;
+
     return (
       <>
         {currentWeather ? (
@@ -41,11 +66,16 @@ class App extends Component {
             <ScreenWrapper dayTime={dayTime}>
               <Carousel
                 className="carousel"
-                slideIndex={1}
+                slideIndex={this.state.slideIndex}
+                afterSlide={item => this.setState({ slideIndex: item })}
                 renderCenterLeftControls={() => <button style={{ display: 'none' }} />}
                 renderCenterRightControls={() => <button style={{ display: 'none' }} />}
               >
-                <SearchScreen dayTime={dayTime} />
+                <SearchScreen
+                  dayTime={dayTime}
+                  getForecast={this.getForecast}
+                  setScreen={this.setScreen}
+                />
                 <MainScreen currentWeather={currentWeather} forecast={forecast} />
                 <DetailsScreen dayTime={dayTime} currentWeather={currentWeather} />
               </Carousel>

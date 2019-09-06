@@ -19,9 +19,25 @@
     outline: none;
     font-size: 16px;
     font-weight: 300;
+    text-transform: capitalize;
     &::placeholder {
       color: $white;
       opacity: 1;
+    }
+  }
+  .autocomplete-dropdown {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: 300;
+    .autocomplete-item {
+      padding: 7px 10px;
+      &:hover {
+        border-radius: 5px;
+        background-color: #fafafa;
+        opacity: 0.2;
+        color: #39346a;
+      }
     }
   }
 }
