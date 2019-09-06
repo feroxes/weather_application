@@ -26,17 +26,27 @@ class App extends Component {
 
   componentDidMount() {
     this.getForecast();
+    setTimeout(this.justFly, 30000);
   }
+
+  justFly = () => {
+    const { innerWidth } = window;
+    this.eagle.style.right = '-50px';
+    const flying = setInterval(() => {
+      this.eagle.style.right = parseFloat(this.eagle.style.right) + 0.3 + 'px';
+      if (parseFloat(this.eagle.style.right) > innerWidth + 100) clearInterval(flying);
+    }, 1);
+  };
 
   getForecast = async () => {
     const { onSetDayTime, onSetCurrentWeather, onSetForecast, searchResult } = this.props;
     onSetDayTime();
     const API_KEY = '34e9e8865eb515573550395b2b961dff';
-    const proxy = 'https://cors-anywhere.herokuapp.com/';
+
     const ENDPOINT = 'https://api.darksky.net/forecast/';
     const { lat, lng } = this.getCityCoordinates();
 
-    const forecast = await axios.get(`${proxy}${ENDPOINT}${API_KEY}/${lat}, ${lng}?units=si`);
+    const forecast = await axios.get(`${ENDPOINT}${API_KEY}/${lat}, ${lng}?units=si`);
     onSetCurrentWeather({ ...forecast.data.currently, ...searchResult.selectedCity });
     onSetForecast(forecast.data.daily.data);
   };
@@ -62,6 +72,11 @@ class App extends Component {
       <>
         {currentWeather ? (
           <div className="App">
+            <img
+              ref={item => (this.eagle = item)}
+              className="eagle"
+              src={require('./assets/images/screen/eagle.gif')}
+            />
             <Background dayTime={dayTime} />
             <ScreenWrapper dayTime={dayTime}>
               <Carousel
