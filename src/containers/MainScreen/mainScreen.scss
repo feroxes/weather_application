@@ -69,6 +69,15 @@
   .main-screen-wrapper{
     .screen-weather {
       margin: 0;
+      .screen-weather-info {
+        .weather-info-location {
+          font-size: 46px;
+          }
+        .weather-info-temperature {
+          font-size: 54px;
+          line-height: 36px;
+        }
+      }
     }
     .screen-forecast {
       .forecast-item {

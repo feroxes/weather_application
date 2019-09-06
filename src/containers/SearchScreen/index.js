@@ -57,6 +57,7 @@ class SearchScreen extends Component {
                       key={index}
                       className="autocomplete-item"
                       onClick={() => this.handleOnCityClick(item)}
+                      onTouchStart={() => this.handleOnCityClick(item)}
                     >
                       {item.name}, {item.country}
                     </div>
