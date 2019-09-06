@@ -1,28 +1,25 @@
 import React from 'react';
 import './mainScreen.scss';
 
-// MAP_CONDITION = {
-//     'clear-day': 'sunny',
-//     'clear-night': 'clear-night',
-//     'rain': 'rainy',
-//     'snow': 'snowy',
-//     'sleet': 'snowy-rainy',
-//     'wind': 'windy',
-//     'fog': 'fog',
-//     'cloudy': 'cloudy',
-//     'partly-cloudy-day': 'partlycloudy',
-//     'partly-cloudy-night': 'partlycloudy',
-//     'hail': 'hail',
-//     'thunderstorm': 'lightning',
-//     'tornado': None,
-// }
-
 function MainScreen({ currentWeather, forecast }) {
   const formatDate = date => {
-    const currentDate = new Date(date);
+    const currentDate = new Date(date * 1000);
     const options = { day: 'numeric', month: 'long' };
     return currentDate.toLocaleDateString('en-GB', options);
   };
+
+  const formatPrecipitationsType = icon => {
+    if (!icon) return ' ';
+    else {
+      let precipitations = icon.replace(/-/g, ' ');
+      if (precipitations.split(' ').length === 3) {
+        let lastIndex = precipitations.lastIndexOf(' ');
+        precipitations = precipitations.substring(0, lastIndex);
+      }
+      return precipitations;
+    }
+  };
+
   const { icon } = currentWeather;
   return (
     <div className="main-screen-wrapper">
@@ -43,7 +40,7 @@ function MainScreen({ currentWeather, forecast }) {
               return (
                 <div className="forecast-item" key={index}>
                   <p className="forecast-date">{formatDate(item.time)}</p>
-                  <p className="forecast-precipitations">{item.precipType}</p>
+                  <p className="forecast-precipitations">{formatPrecipitationsType(item.icon)}</p>
                   <div className="forecast-temperature">
                     <img src={require(`../../assets/images/icons/${item.icon}.png`)} alt="icon" />
                     <p> {Math.round(item.apparentTemperatureMax)} °</p>

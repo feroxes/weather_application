@@ -12,6 +12,17 @@ function DetailsScreen({ dayTime, currentWeather }) {
     visibility,
     windSpeed
   } = currentWeather;
+
+  const setMillSpeed = () => {
+    if (windSpeed <= 8) {
+      return require('../../assets/images/icons/windmill-slow.gif');
+    } else if (windSpeed > 8 && windSpeed <= 13) {
+      return require('../../assets/images/icons/windmill-mid.gif');
+    } else if (windSpeed > 13) {
+      return require('../../assets/images/icons/windmill-fast.gif');
+    }
+  };
+
   return (
     <div className={`blur-background blur-background-${dayTime}`}>
       <div className="details-screen-wrapper">
@@ -71,17 +82,9 @@ function DetailsScreen({ dayTime, currentWeather }) {
           <h2 className="details-section-title">Wind & Pressure</h2>
           <div className="wind-and-pressure-block">
             <div className="mills">
-              <img
-                className="mill-big"
-                src={require('../../assets/images/icons/windmill-mid.gif')}
-                alt="Mill"
-              />
-              <img
-                className="mill-small"
-                src={require('../../assets/images/icons/windmill-mid.gif')}
-                alt="Mill"
-              />
-              <p className="wind-speed">{windSpeed} mph</p>
+              <img className="mill-big" src={setMillSpeed()} alt="Mill" />
+              <img className="mill-small" src={setMillSpeed()} alt="Mill" />
+              <p className="wind-speed">{windSpeed} mps</p>
             </div>
             <div className="pressure">
               <p>Barometer</p>

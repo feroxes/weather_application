@@ -44,8 +44,9 @@
         font-weight: 200;
       }
       .forecast-precipitations {
-        font-size: 22px;
-        margin: 7px 0;
+        text-transform: capitalize;
+        font-size: 20px;
+        margin: 8px 0;
       }
       .forecast-temperature {
         display: flex;
