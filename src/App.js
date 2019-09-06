@@ -32,11 +32,11 @@ class App extends Component {
     const { onSetDayTime, onSetCurrentWeather, onSetForecast, searchResult } = this.props;
     onSetDayTime();
     const API_KEY = '34e9e8865eb515573550395b2b961dff';
-    // const proxy = 'https://cors-anywhere.herokuapp.com/';
+    const proxy = 'https://cors-anywhere.herokuapp.com/';
     const ENDPOINT = 'https://api.darksky.net/forecast/';
     const { lat, lng } = this.getCityCoordinates();
 
-    const forecast = await axios.get(`${ENDPOINT}${API_KEY}/${lat}, ${lng}?units=si`);
+    const forecast = await axios.get(`${proxy}${ENDPOINT}${API_KEY}/${lat}, ${lng}?units=si`);
     onSetCurrentWeather({ ...forecast.data.currently, ...searchResult.selectedCity });
     onSetForecast(forecast.data.daily.data);
   };
