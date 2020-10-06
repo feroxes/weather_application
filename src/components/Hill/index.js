@@ -2,22 +2,12 @@ import React from 'react';
 import Bounce from 'react-reveal/Bounce';
 import './hill.scss';
 
+import { HILL } from '../../config/constants.js';
+
 function Hill({ dayTime, left, right }) {
   const setHill = () => {
-    const leftHillDay = require('../../assets/images/background/left-hill-day.png');
-    const leftHillNight = require('../../assets/images/background/left-hill-night.png');
-    const rightHillDay = require('../../assets/images/background/right-hill-day.png');
-    const rightHillNight = require('../../assets/images/background/right-hill-night.png');
-
-    if (dayTime === 'day') {
-      if (left) {
-        return leftHillDay;
-      } else return rightHillDay;
-    } else {
-      if (left) {
-        return leftHillNight;
-      } else return rightHillNight;
-    }
+    if (left) return HILL[dayTime].leftHill;
+    else return HILL[dayTime].rightHill;
   };
 
   return (

@@ -11,9 +11,3 @@ export const setCurrentWeather = data => {
     payload: data
   };
 };
-
-export const formatTemperature = () => {
-  return {
-    type: 'SET_FORECASTSET_CURRENT_WEATHER',
-  };
-};

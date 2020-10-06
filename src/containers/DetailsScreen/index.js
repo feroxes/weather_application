@@ -1,6 +1,8 @@
 import React from 'react';
 import './detailsScreen.scss';
 
+import { SLOW_WIND_SPEED, MEDIUM_WIND_SPEED, WIND_MILL } from '../../config/constants.js';
+
 function DetailsScreen({ dayTime, currentWeather }) {
   const {
     cloudCover,
@@ -14,13 +16,10 @@ function DetailsScreen({ dayTime, currentWeather }) {
   } = currentWeather;
 
   const setMillSpeed = () => {
-    if (windSpeed <= 8) {
-      return require('../../assets/images/icons/windmill-slow.gif');
-    } else if (windSpeed > 8 && windSpeed <= 13) {
-      return require('../../assets/images/icons/windmill-mid.gif');
-    } else if (windSpeed > 13) {
-      return require('../../assets/images/icons/windmill-fast.gif');
-    }
+    if (windSpeed <= SLOW_WIND_SPEED) return WIND_MILL.windmillSlow;
+    else if (windSpeed > SLOW_WIND_SPEED && windSpeed <= MEDIUM_WIND_SPEED)
+      return WIND_MILL.windmillMid;
+    else if (windSpeed > MEDIUM_WIND_SPEED) return WIND_MILL.windmillFast;
   };
 
   return (
