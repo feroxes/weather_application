@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+
 import setDayTime from './actions/background';
-import { setForecast } from './actions/forecast';
-import { setCurrentWeather } from './actions/forecast';
+import { setForecast, setCurrentWeather } from './actions/forecast';
 
 import Background from './containers/Background';
-import ScreenWrapper from './components/ScreenWrapper';
-
 import SearchScreen from './containers/SearchScreen';
 import MainScreen from './containers/MainScreen';
 import DetailsScreen from './containers/DetailsScreen';
 
+import ScreenWrapper from './components/ScreenWrapper';
 import Carousel from 'nuka-carousel';
 
 import './assets/scss/index.scss';
+
+import { API_KEY, ENDPOINT, PROXY, KYIV_LAT, KYIV_LNG } from './config/constants.js';
 
 class App extends Component {
   constructor(props) {
@@ -41,22 +42,22 @@ class App extends Component {
   getForecast = async () => {
     const { onSetDayTime, onSetCurrentWeather, onSetForecast, searchResult } = this.props;
     onSetDayTime();
-    const API_KEY = '34e9e8865eb515573550395b2b961dff';
-    const proxy = 'https://cors-anywhere.herokuapp.com/';
-    const ENDPOINT = 'https://api.darksky.net/forecast/';
     const { lat, lng } = this.getCityCoordinates();
 
-    const forecast = await axios.get(`${proxy}${ENDPOINT}${API_KEY}/${lat}, ${lng}?units=si`);
+    const forecast = await axios.get(`${PROXY}${ENDPOINT}${API_KEY}/${lat}, ${lng}?units=si`);
     onSetCurrentWeather({ ...forecast.data.currently, ...searchResult.selectedCity });
     onSetForecast(forecast.data.daily.data);
   };
 
   getCityCoordinates = () => {
-    if (this.props.searchResult.selectedCity) {
-      let { lat, lng } = this.props.searchResult.selectedCity;
-      return { lat, lng };
+    const { selectedCity } = this.props.searchResult;
+    if (selectedCity) {
+      return {
+        lat: selectedCity.lat,
+        lng: selectedCity.lng
+      };
     } else {
-      return { lat: '50.450', lng: '30.5234' };
+      return { lat: KYIV_LAT, lng: KYIV_LNG };
     }
   };
 
@@ -67,7 +68,7 @@ class App extends Component {
   render() {
     const { dayTime } = this.props.background;
     const { forecast, currentWeather } = this.props.forecast;
-
+    const { slideIndex } = this.state;
     return (
       <>
         {currentWeather ? (
@@ -82,7 +83,7 @@ class App extends Component {
             <ScreenWrapper dayTime={dayTime}>
               <Carousel
                 className="carousel"
-                slideIndex={this.state.slideIndex}
+                slideIndex={slideIndex}
                 afterSlide={item => this.setState({ slideIndex: item })}
                 renderCenterLeftControls={() => <button style={{ display: 'none' }} />}
                 renderCenterRightControls={() => <button style={{ display: 'none' }} />}

@@ -12,12 +12,13 @@ class SearchScreen extends Component {
   }
 
   handleChange = e => {
-    this.setState({ searchField: e.target.value.toLowerCase() }, () => this.citySearch());
+    const { value } = e.target;
+    this.setState({ searchField: value.toLowerCase() }, () => this.citySearch());
   };
 
   citySearch = () => {
     const { searchField } = this.state;
-    let autocompleteResult = [];
+    const autocompleteResult = [];
     cities.forEach(item => {
       if (item.name.toLowerCase().includes(searchField) && autocompleteResult.length < 10)
         autocompleteResult.push(item);
@@ -44,7 +45,7 @@ class SearchScreen extends Component {
           <input
             placeholder="Enter your city..."
             className="search-field"
-            value={this.state.searchField}
+            value={searchField}
             onChange={this.handleChange}
             type="text"
             name="search-field"
@@ -52,6 +53,7 @@ class SearchScreen extends Component {
           <div className="autocomplete-dropdown">
             {autocompleteResult.length && searchField.length
               ? autocompleteResult.map((item, index) => {
+                  const { name, country } = item;
                   return (
                     <div
                       key={index}
@@ -59,7 +61,7 @@ class SearchScreen extends Component {
                       onClick={() => this.handleOnCityClick(item)}
                       onTouchStart={() => this.handleOnCityClick(item)}
                     >
-                      {item.name}, {item.country}
+                      {name}, {country}
                     </div>
                   );
                 })
