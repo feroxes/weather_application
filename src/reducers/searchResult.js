@@ -1,10 +1,12 @@
+import { SET_CITY } from '../actions/types.js';
+
 const initialState = {
   selectedCity: null
 };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case 'SET_CITY':
+    case SET_CITY:
       return {
         ...state,
         selectedCity: payload

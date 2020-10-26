@@ -1,3 +1,5 @@
+import { SET_CURRENT_WEATHER, SET_FORECAST } from '../actions/types.js';
+
 const initialState = {
   forecast: null,
   currentWeather: null
@@ -5,12 +7,12 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case 'SET_FORECAST':
+    case SET_FORECAST:
       return {
         ...state,
         forecast: payload
       };
-    case 'SET_CURRENT_WEATHER':
+    case SET_CURRENT_WEATHER:
       return {
         ...state,
         currentWeather: payload
