@@ -1,11 +1,14 @@
 import React from 'react';
-import Forecast from '../../components/Forecast';
+import { useSelector } from 'react-redux';
+
+import { Forecast } from '../../components/Forecast';
 
 import { DEFAULT_CITY_NAME } from '../../config/constants.js';
-
 import './mainScreen.scss';
 
-function MainScreen({ currentWeather, forecast }) {
+export const MainScreen = () => {
+  const currentWeather = useSelector(state => state.forecast.currentWeather);
+
   const { icon, name } = currentWeather;
   return (
     <div className="main-screen-wrapper">
@@ -20,9 +23,7 @@ function MainScreen({ currentWeather, forecast }) {
           </p>
         </div>
       </div>
-      <Forecast forecast={forecast} />
+      <Forecast />
     </div>
   );
-}
-
-export default MainScreen;
+};

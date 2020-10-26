@@ -1,10 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import { MAX_ICON_NAME_LENGTH } from '../../config/constants.js';
-
 import './forecast.scss';
 
-function Forecast({ forecast }) {
+export const Forecast = () => {
+  const forecast = useSelector(state => state.forecast.forecast);
+
   const formatDate = date => {
     const currentDate = new Date(date * 1000);
     const options = { day: 'numeric', month: 'long' };
@@ -39,6 +41,4 @@ function Forecast({ forecast }) {
         : 'Loading...'}
     </div>
   );
-}
-
-export default Forecast;
+};

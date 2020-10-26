@@ -1,123 +1,97 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { useState, useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
 import setDayTime from './actions/background';
 import { setForecast, setCurrentWeather } from './actions/forecast';
 
-import Background from './containers/Background';
-import SearchScreen from './containers/SearchScreen';
-import MainScreen from './containers/MainScreen';
-import DetailsScreen from './containers/DetailsScreen';
-
-import ScreenWrapper from './components/ScreenWrapper';
+import { Background } from './containers/Background';
+import { SearchScreen } from './containers/SearchScreen';
+import { MainScreen } from './containers/MainScreen';
+import { DetailsScreen } from './containers/DetailsScreen';
+import { ScreenWrapper } from './components/ScreenWrapper';
 import Carousel from 'nuka-carousel';
 
 import './assets/scss/index.scss';
 
 import { API_KEY, ENDPOINT, PROXY, KYIV_LAT, KYIV_LNG } from './config/constants.js';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      slideIndex: 1
-    };
-  }
+export const App = () => {
+  const [slideIndex, setSlideIndex] = useState(1);
 
-  componentDidMount() {
-    this.getForecast();
-    setTimeout(this.justFly, 30000);
-  }
+  const selectedCity = useSelector(state => state.searchResult.selectedCity);
+  const currentWeather = useSelector(state => state.forecast.currentWeather);
 
-  justFly = () => {
+  const eagleRef = useRef(null);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    getForecast();
+    setTimeout(justFly, 30000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    getForecast();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedCity]);
+
+  const justFly = () => {
     const { innerWidth } = window;
-    this.eagle.style.right = '-50px';
+    eagleRef.current.style.right = '-50px';
     const flying = setInterval(() => {
-      this.eagle.style.right = parseFloat(this.eagle.style.right) + 0.3 + 'px';
-      if (parseFloat(this.eagle.style.right) > innerWidth + 100) clearInterval(flying);
+      eagleRef.current.style.right = parseFloat(eagleRef.current.style.right) + 0.3 + 'px';
+      if (parseFloat(eagleRef.current.style.right) > innerWidth + 100) clearInterval(flying);
     }, 1);
   };
 
-  getForecast = async () => {
-    const { onSetDayTime, onSetCurrentWeather, onSetForecast, searchResult } = this.props;
-    onSetDayTime();
-    const { lat, lng } = this.getCityCoordinates();
-
+  const getForecast = async () => {
+    const { lat, lng } = getCityCoordinates();
     const forecast = await axios.get(`${PROXY}${ENDPOINT}${API_KEY}/${lat}, ${lng}?units=si`);
-    onSetCurrentWeather({ ...forecast.data.currently, ...searchResult.selectedCity });
-    onSetForecast(forecast.data.daily.data);
+
+    dispatch(setDayTime());
+    dispatch(setCurrentWeather({ ...forecast.data.currently, selectedCity }));
+    dispatch(setForecast(forecast.data.daily.data));
   };
 
-  getCityCoordinates = () => {
-    const { selectedCity } = this.props.searchResult;
-    if (selectedCity) {
+  const getCityCoordinates = () => {
+    if (selectedCity)
       return {
         lat: selectedCity.lat,
         lng: selectedCity.lng
       };
-    } else {
-      return { lat: KYIV_LAT, lng: KYIV_LNG };
-    }
+    else return { lat: KYIV_LAT, lng: KYIV_LNG };
   };
 
-  setScreen = slideIndex => {
-    this.setState({ slideIndex });
-  };
-
-  render() {
-    const { dayTime } = this.props.background;
-    const { forecast, currentWeather } = this.props.forecast;
-    const { slideIndex } = this.state;
-    return (
-      <>
-        {currentWeather ? (
-          <div className="App">
-            <img
-              ref={item => (this.eagle = item)}
-              className="eagle"
-              src={require('./assets/images/screen/eagle.gif')}
-              alt="Eagle"
-            />
-            <Background dayTime={dayTime} />
-            <ScreenWrapper dayTime={dayTime}>
-              <Carousel
-                className="carousel"
-                slideIndex={slideIndex}
-                afterSlide={item => this.setState({ slideIndex: item })}
-                renderCenterLeftControls={() => <button style={{ display: 'none' }} />}
-                renderCenterRightControls={() => <button style={{ display: 'none' }} />}
-              >
-                <SearchScreen
-                  dayTime={dayTime}
-                  getForecast={this.getForecast}
-                  setScreen={this.setScreen}
-                />
-                <MainScreen currentWeather={currentWeather} forecast={forecast} />
-                <DetailsScreen dayTime={dayTime} currentWeather={currentWeather} />
-              </Carousel>
-            </ScreenWrapper>
-          </div>
-        ) : (
-          'Loading...'
-        )}
-      </>
-    );
-  }
-}
-
-const mapStateToProps = state => {
-  return state;
+  return (
+    <>
+      {currentWeather ? (
+        <div className="App">
+          <img
+            ref={eagleRef}
+            className="eagle"
+            src={require('./assets/images/screen/eagle.gif')}
+            alt="Eagle"
+          />
+          <Background />
+          <ScreenWrapper>
+            <Carousel
+              className="carousel"
+              slideIndex={slideIndex}
+              afterSlide={item => setSlideIndex(item)}
+              renderCenterLeftControls={() => <button style={{ display: 'none' }} />}
+              renderCenterRightControls={() => <button style={{ display: 'none' }} />}
+            >
+              <SearchScreen setSlideIndex={setSlideIndex} />
+              <MainScreen />
+              <DetailsScreen />
+            </Carousel>
+          </ScreenWrapper>
+        </div>
+      ) : (
+        'Loading...'
+      )}
+    </>
+  );
 };
-const mapDispatchToProps = dispatch => {
-  return {
-    onSetDayTime: () => dispatch(setDayTime()),
-    onSetForecast: data => dispatch(setForecast(data)),
-    onSetCurrentWeather: data => dispatch(setCurrentWeather(data))
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);

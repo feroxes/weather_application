@@ -1,96 +1,70 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import setCity from '../../actions/searchResult';
 
 import './searchScreen.scss';
 import cities from 'cities.json';
 
-class SearchScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { searchField: '', selectedCity: [], autocompleteResult: [] };
-  }
+export const SearchScreen = ({ setSlideIndex }) => {
+  const [searchField, setSearchField] = useState('');
+  const [autocompleteResult, setAutocompleteResult] = useState([]);
 
-  handleChange = e => {
-    const { value } = e.target;
-    this.setState({ searchField: value.toLowerCase() }, () => this.citySearch());
-  };
+  const dayTime = useSelector(state => state.background.dayTime);
 
-  citySearch = () => {
-    const { searchField } = this.state;
-    const autocompleteResult = [];
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const result = [];
     cities.forEach(item => {
-      if (item.name.toLowerCase().includes(searchField) && autocompleteResult.length < 10)
-        autocompleteResult.push(item);
+      if (item.name.toLowerCase().includes(searchField) && result.length < 10) result.push(item);
     });
-    this.setState({ autocompleteResult });
+    setAutocompleteResult(result);
+  }, [searchField]);
+
+  const handleOnCityClick = item => {
+    dispatch(setCity(item));
+    setSearchField('');
+    setSlideIndex(1);
   };
 
-  handleOnCityClick = item => {
-    const { onSetCity, getForecast, setScreen } = this.props;
-    this.setState({ selectedCity: item, searchField: '' }, () => {
-      getForecast();
-    });
-    onSetCity(item);
-    setScreen(1);
-  };
-
-  render() {
-    const { dayTime } = this.props;
-    const { autocompleteResult, searchField } = this.state;
-    return (
-      <div className={`blur-background blur-background-${dayTime}`}>
-        <div className="search-screen-wrapper">
-          <h2 className="search-screen-header">Search city</h2>
-          <input
-            placeholder="Enter your city..."
-            className="search-field"
-            value={searchField}
-            onChange={this.handleChange}
-            type="text"
-            name="search-field"
-          />
-          <div className="autocomplete-dropdown">
-            {autocompleteResult.length && searchField.length
-              ? autocompleteResult.map((item, index) => {
-                  const { name, country } = item;
-                  return (
-                    <div
-                      key={index}
-                      className="autocomplete-item"
-                      onClick={() => this.handleOnCityClick(item)}
-                      onTouchStart={() => this.handleOnCityClick(item)}
-                    >
-                      {name}, {country}
-                    </div>
-                  );
-                })
-              : ''}
-          </div>
+  return (
+    <div className={`blur-background blur-background-${dayTime}`}>
+      <div className="search-screen-wrapper">
+        <h2 className="search-screen-header">Search city</h2>
+        <input
+          placeholder="Enter your city..."
+          className="search-field"
+          value={searchField}
+          onChange={e => setSearchField(e.target.value.toLowerCase())}
+          type="text"
+          name="search-field"
+        />
+        <div className="autocomplete-dropdown">
+          {autocompleteResult.length && searchField.length
+            ? autocompleteResult.map((item, index) => {
+                const { name, country } = item;
+                return (
+                  <div
+                    key={index}
+                    className="autocomplete-item"
+                    onClick={() => handleOnCityClick(item)}
+                    onTouchStart={() => handleOnCityClick(item)}
+                  >
+                    {name}, {country}
+                  </div>
+                );
+              })
+            : ''}
         </div>
-        <a
-          className="powered"
-          href="https://darksky.net/poweredby/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by Dark Sky
-        </a>
       </div>
-    );
-  }
-}
-
-const mapStateToProps = state => {
-  return state;
+      <a
+        className="powered"
+        href="https://darksky.net/poweredby/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Powered by Dark Sky
+      </a>
+    </div>
+  );
 };
-const mapDispatchToProps = dispatch => {
-  return {
-    onSetCity: data => dispatch(setCity(data))
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SearchScreen);

@@ -1,8 +1,12 @@
 import React from 'react';
-import './screenWrapper.scss';
+import { useSelector } from 'react-redux';
 import Zoom from 'react-reveal/Bounce';
 
-function ScreenWrapper({ dayTime, children }) {
+import './screenWrapper.scss';
+
+export const ScreenWrapper = ({ children }) => {
+  const dayTime = useSelector(state => state.background.dayTime);
+
   return (
     <div className={`screen-wrapper screen-wrapper-${dayTime}`}>
       <Zoom>
@@ -13,6 +17,4 @@ function ScreenWrapper({ dayTime, children }) {
       {children}
     </div>
   );
-}
-
-export default ScreenWrapper;
+};
