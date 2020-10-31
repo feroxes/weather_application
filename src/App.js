@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
 import setDayTime from './actions/background';
-import { setForecast, setCurrentWeather } from './actions/forecast';
+import { setForecast, setCurrentWeather, loadData } from './actions/forecast';
 
 import { Background } from './containers/Background';
 import { SearchScreen } from './containers/SearchScreen';
@@ -26,14 +26,15 @@ export const App = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    getForecast();
-    setTimeout(justFly, 30000);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   getForecast();
+  //
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   useEffect(() => {
     getForecast();
+    setTimeout(justFly, 30000);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCity]);
 
@@ -64,8 +65,13 @@ export const App = () => {
     else return { lat: KYIV_LAT, lng: KYIV_LNG };
   };
 
+  const click = () => {
+    dispatch(loadData());
+  };
+
   return (
     <>
+      <button onClick={click}>click</button>
       {currentWeather ? (
         <div className="App">
           <img

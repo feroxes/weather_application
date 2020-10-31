@@ -1,4 +1,4 @@
-import { SET_FORECAST, SET_CURRENT_WEATHER } from './types.js';
+import { SET_FORECAST, SET_CURRENT_WEATHER, LOAD_DATA } from './types.js';
 
 export const setForecast = data => {
   return {
@@ -11,5 +11,11 @@ export const setCurrentWeather = data => {
   return {
     type: SET_CURRENT_WEATHER,
     payload: data
+  };
+};
+
+export const loadData = () => {
+  return {
+    type: LOAD_DATA
   };
 };

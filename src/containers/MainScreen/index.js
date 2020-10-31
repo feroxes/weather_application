@@ -8,8 +8,10 @@ import './mainScreen.scss';
 
 export const MainScreen = () => {
   const currentWeather = useSelector(state => state.forecast.currentWeather);
+  const selectedCity = useSelector(state => state.searchResult.selectedCity);
 
-  const { icon, name } = currentWeather;
+  const { icon } = currentWeather;
+
   return (
     <div className="main-screen-wrapper">
       <div className="screen-weather">
@@ -17,7 +19,7 @@ export const MainScreen = () => {
           <img src={require(`../../assets/images/icons/${icon}.png`)} alt="icon" />
         </div>
         <div className="screen-weather-info">
-          <h2 className="weather-info-location">{name ? name : DEFAULT_CITY_NAME}</h2>
+          <h2 className="weather-info-location">{selectedCity?.name || DEFAULT_CITY_NAME}</h2>
           <p className="weather-info-temperature">
             {Math.round(currentWeather.apparentTemperature)} °<sup>C</sup>
           </p>
