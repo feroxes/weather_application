@@ -50,10 +50,11 @@ export const App = () => {
   const getForecast = async () => {
     const { lat, lng } = getCityCoordinates();
     const forecast = await axios.get(`${PROXY}${ENDPOINT}${API_KEY}/${lat}, ${lng}?units=si`);
+    const { currently, daily } = forecast.data;
 
     dispatch(setDayTime());
-    dispatch(setCurrentWeather({ ...forecast.data.currently, selectedCity }));
-    dispatch(setForecast(forecast.data.daily.data));
+    dispatch(setCurrentWeather({ ...currently }));
+    dispatch(setForecast(daily.data));
   };
 
   const getCityCoordinates = () => {
