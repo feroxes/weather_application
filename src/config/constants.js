@@ -5,7 +5,7 @@ export const ENDPOINT = 'https://api.darksky.net/forecast/';
 export const APP_STATES = {
   Created: 'Created',
   Active: 'Active',
-  LoadData: 'LoadData'
+  LoadingData: 'LoadingData'
 };
 
 export const DEFAULT_CITY = {

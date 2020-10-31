@@ -13,12 +13,13 @@ import { ScreenWrapper } from './components/screen-wrapper/screen-wrapper.js';
 import Carousel from 'nuka-carousel';
 
 import './assets/scss/index.scss';
+import { APP_STATES } from './config/constants.js';
 
 export const App = () => {
   const [slideIndex, setSlideIndex] = useState(1);
 
   const selectedCity = useSelector(state => state.app.selectedCity);
-  const currentWeather = useSelector(state => state.forecast.currentWeather);
+  const appState = useSelector(state => state.app.appState);
 
   const eagleRef = useRef(null);
   const dispatch = useDispatch();
@@ -43,7 +44,7 @@ export const App = () => {
 
   return (
     <>
-      {currentWeather ? (
+      {appState === APP_STATES.Active ? (
         <div className="App">
           <img
             ref={eagleRef}
