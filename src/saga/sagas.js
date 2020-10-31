@@ -6,13 +6,16 @@ import { setForecast } from '../actions/forecast.js';
 import { LOAD_DATA } from '../actions/types.js';
 import { API_KEY, ENDPOINT, PROXY } from '../config/constants.js';
 
-function fetchData() {
-  return axios.get(`${PROXY}${ENDPOINT}${API_KEY}`);
+function fetchData(params) {
+  const { lat, lng } = params;
+  return axios.get(`${PROXY}${ENDPOINT}${API_KEY}/${lat},${lng}?units=si`);
 }
 
-function* workerLoadDate() {
-  const { data } = yield call(fetchData);
-  yield put(setForecast(data.currently));
+function* workerLoadDate(action) {
+  const forecast = yield call(() => fetchData(action.payload));
+  const { currently, daily } = forecast.data;
+
+  yield put(setForecast({ currentWeather: currently, forecast: daily.data }));
 }
 
 export function* watchLoadData() {
