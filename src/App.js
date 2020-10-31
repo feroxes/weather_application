@@ -6,11 +6,11 @@ import { setForecast, setCurrentWeather, loadData } from './actions/forecast';
 import { initApp } from './actions/app.js';
 import { getDayTime } from './helper/helper.js';
 
-import { Background } from './containers/Background';
-import { SearchScreen } from './containers/SearchScreen';
-import { MainScreen } from './containers/MainScreen';
-import { DetailsScreen } from './containers/DetailsScreen';
-import { ScreenWrapper } from './components/ScreenWrapper';
+import { Background } from './containers/background/background.js';
+import { SearchScreen } from './containers/search-screen/search-screen.js';
+import { MainScreen } from './containers/main-screen/main-screen.js';
+import { DetailsScreen } from './containers/details-screen/details-screen.js';
+import { ScreenWrapper } from './components/screen-wrapper/screen-wrapper.js';
 import Carousel from 'nuka-carousel';
 
 import './assets/scss/index.scss';

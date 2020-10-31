@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { Forecast } from '../../components/Forecast';
+import { Forecast } from '../../components/forecast/forecast.js';
 
-import './mainScreen.scss';
+import './main-screen.scss';
 
 export const MainScreen = () => {
   const currentWeather = useSelector(state => state.forecast.currentWeather);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import './detailsScreen.scss';
+import './details-screen.scss';
 
 import { SLOW_WIND_SPEED, MEDIUM_WIND_SPEED, WIND_MILL } from '../../config/constants.js';
 

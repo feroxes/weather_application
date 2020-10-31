@@ -2,8 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Bounce from 'react-reveal/Bounce';
 
-import { Hill } from '../../components/Hill';
-import { Cloud } from '../../components/Cloud';
+import { Hill } from '../../components/hill/hill.js';
+import { Cloud } from '../../components/cloud/cloud.js';
 import './background.scss';
 
 export const Background = () => {
