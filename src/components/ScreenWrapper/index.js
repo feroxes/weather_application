@@ -5,7 +5,7 @@ import Zoom from 'react-reveal/Bounce';
 import './screenWrapper.scss';
 
 export const ScreenWrapper = ({ children }) => {
-  const dayTime = useSelector(state => state.background.dayTime);
+  const dayTime = useSelector(state => state.app.dayTime);
 
   return (
     <div className={`screen-wrapper screen-wrapper-${dayTime}`}>

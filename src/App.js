@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
-import setDayTime from './actions/background';
 import { setForecast, setCurrentWeather, loadData } from './actions/forecast';
+import { initApp } from './actions/app.js';
 
 import { Background } from './containers/Background';
 import { SearchScreen } from './containers/SearchScreen';
@@ -26,11 +26,11 @@ export const App = () => {
 
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   getForecast();
-  //
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+  useEffect(() => {
+    const date = new Date();
+    const dayTime = date.getHours() >= 17 || date.getHours() <= 4 ? 'night' : 'day';
+    dispatch(initApp(dayTime));
+  }, [dispatch]);
 
   useEffect(() => {
     getForecast();
@@ -52,7 +52,6 @@ export const App = () => {
     const forecast = await axios.get(`${PROXY}${ENDPOINT}${API_KEY}/${lat}, ${lng}?units=si`);
     const { currently, daily } = forecast.data;
 
-    dispatch(setDayTime());
     dispatch(setCurrentWeather({ ...currently }));
     dispatch(setForecast(daily.data));
   };

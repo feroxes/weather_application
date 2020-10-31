@@ -5,7 +5,7 @@ import './detailsScreen.scss';
 import { SLOW_WIND_SPEED, MEDIUM_WIND_SPEED, WIND_MILL } from '../../config/constants.js';
 
 export const DetailsScreen = () => {
-  const dayTime = useSelector(state => state.background.dayTime);
+  const dayTime = useSelector(state => state.app.dayTime);
   const currentWeather = useSelector(state => state.forecast.currentWeather);
 
   const {

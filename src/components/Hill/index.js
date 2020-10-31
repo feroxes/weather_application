@@ -6,7 +6,8 @@ import { HILL } from '../../config/constants.js';
 import { useSelector } from 'react-redux';
 
 export const Hill = ({ left, right }) => {
-  const dayTime = useSelector(state => state.background.dayTime);
+  const dayTime = useSelector(state => state.app.dayTime);
+
   const setHill = () => {
     if (left) return HILL[dayTime].leftHill;
     else return HILL[dayTime].rightHill;

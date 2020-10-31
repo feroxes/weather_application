@@ -9,7 +9,7 @@ export const SearchScreen = ({ setSlideIndex }) => {
   const [searchField, setSearchField] = useState('');
   const [autocompleteResult, setAutocompleteResult] = useState([]);
 
-  const dayTime = useSelector(state => state.background.dayTime);
+  const dayTime = useSelector(state => state.app.dayTime);
 
   const dispatch = useDispatch();
 

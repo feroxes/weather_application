@@ -7,7 +7,7 @@ import { Cloud } from '../../components/Cloud';
 import './background.scss';
 
 export const Background = () => {
-  const dayTime = useSelector(state => state.background.dayTime);
+  const dayTime = useSelector(state => state.app.dayTime);
 
   return (
     <div className={`background-wrapper background-${dayTime}`}>
