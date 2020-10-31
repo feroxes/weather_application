@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import { setForecast, setCurrentWeather, loadData } from './actions/forecast';
 import { initApp } from './actions/app.js';
+import { getDayTime } from './helper/helper.js';
 
 import { Background } from './containers/Background';
 import { SearchScreen } from './containers/SearchScreen';
@@ -14,12 +15,12 @@ import Carousel from 'nuka-carousel';
 
 import './assets/scss/index.scss';
 
-import { API_KEY, ENDPOINT, PROXY, KYIV_LAT, KYIV_LNG } from './config/constants.js';
+import { API_KEY, ENDPOINT, PROXY } from './config/constants.js';
 
 export const App = () => {
   const [slideIndex, setSlideIndex] = useState(1);
 
-  const selectedCity = useSelector(state => state.searchResult.selectedCity);
+  const selectedCity = useSelector(state => state.app.selectedCity);
   const currentWeather = useSelector(state => state.forecast.currentWeather);
 
   const eagleRef = useRef(null);
@@ -27,9 +28,7 @@ export const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const date = new Date();
-    const dayTime = date.getHours() >= 17 || date.getHours() <= 4 ? 'night' : 'day';
-    dispatch(initApp(dayTime));
+    dispatch(initApp(getDayTime()));
   }, [dispatch]);
 
   useEffect(() => {
@@ -48,21 +47,12 @@ export const App = () => {
   };
 
   const getForecast = async () => {
-    const { lat, lng } = getCityCoordinates();
+    const { lat, lng } = selectedCity;
     const forecast = await axios.get(`${PROXY}${ENDPOINT}${API_KEY}/${lat}, ${lng}?units=si`);
     const { currently, daily } = forecast.data;
 
     dispatch(setCurrentWeather({ ...currently }));
     dispatch(setForecast(daily.data));
-  };
-
-  const getCityCoordinates = () => {
-    if (selectedCity)
-      return {
-        lat: selectedCity.lat,
-        lng: selectedCity.lng
-      };
-    else return { lat: KYIV_LAT, lng: KYIV_LNG };
   };
 
   const click = () => {

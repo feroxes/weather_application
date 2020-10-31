@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import setCity from '../../actions/searchResult';
+import { setSelectedCity } from '../../actions/app';
 
 import './searchScreen.scss';
 import cities from 'cities.json';
@@ -22,7 +22,7 @@ export const SearchScreen = ({ setSlideIndex }) => {
   }, [searchField]);
 
   const handleOnCityClick = item => {
-    dispatch(setCity(item));
+    dispatch(setSelectedCity(item));
     setSearchField('');
     setSlideIndex(1);
   };

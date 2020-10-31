@@ -8,10 +8,6 @@ export const APP_STATES = {
   LoadData: 'LoadData'
 };
 
-export const DEFAULT_CITY_NAME = 'Kyiv';
-export const KYIV_LAT = '50.450';
-export const KYIV_LNG = '30.5234';
-
 export const DEFAULT_CITY = {
   country: 'UA',
   lat: '50.45466',

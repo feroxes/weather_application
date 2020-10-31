@@ -3,14 +3,13 @@ import { useSelector } from 'react-redux';
 
 import { Forecast } from '../../components/Forecast';
 
-import { DEFAULT_CITY_NAME } from '../../config/constants.js';
 import './mainScreen.scss';
 
 export const MainScreen = () => {
   const currentWeather = useSelector(state => state.forecast.currentWeather);
-  const selectedCity = useSelector(state => state.searchResult.selectedCity);
+  const selectedCity = useSelector(state => state.app.selectedCity);
 
-  const { icon } = currentWeather;
+  const { icon, apparentTemperature } = currentWeather;
 
   return (
     <div className="main-screen-wrapper">
@@ -19,9 +18,9 @@ export const MainScreen = () => {
           <img src={require(`../../assets/images/icons/${icon}.png`)} alt="icon" />
         </div>
         <div className="screen-weather-info">
-          <h2 className="weather-info-location">{selectedCity?.name || DEFAULT_CITY_NAME}</h2>
+          <h2 className="weather-info-location">{selectedCity.name}</h2>
           <p className="weather-info-temperature">
-            {Math.round(currentWeather.apparentTemperature)} °<sup>C</sup>
+            {Math.round(apparentTemperature)} °<sup>C</sup>
           </p>
         </div>
       </div>
