@@ -8,13 +8,18 @@ import './background.scss';
 
 export const Background = () => {
   const dayTime = useSelector(state => state.app.dayTime);
+  const cloudPosition = [
+    { top: '5vh', right: '75vw' },
+    { top: '3vh', right: '6vw' },
+    { top: '15vw', right: '15vw' }
+  ];
 
   return (
     <div className={`background-wrapper background-${dayTime}`}>
       <Bounce top>
-        <Cloud top="5vh" left="12vw" />
-        <Cloud top="3vh" right="6vw" />
-        <Cloud top="15vw" right="15vw" />
+        {cloudPosition.map((pos, i) => {
+          return <Cloud top={pos.top} right={pos.right} key={i} />;
+        })}
       </Bounce>
       <Hill left="-20px" />
       <Hill right="-20px" />

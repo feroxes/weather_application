@@ -24,7 +24,9 @@ export const App = () => {
   const eagleRef = useRef(null);
   const dispatch = useDispatch();
 
-  useEffect(() => dispatch(initApp(getDayTime())), [dispatch]);
+  useEffect(() => {
+    dispatch(initApp(getDayTime()));
+  }, [dispatch]);
 
   useEffect(() => {
     const { lat, lng } = selectedCity;
