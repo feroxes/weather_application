@@ -3,8 +3,11 @@ import Bounce from 'react-reveal/Bounce';
 import './hill.scss';
 
 import { HILL } from '../../config/constants.js';
+import { useSelector } from 'react-redux';
 
-function Hill({ dayTime, left, right }) {
+export const Hill = ({ left, right }) => {
+  const dayTime = useSelector(state => state.app.dayTime);
+
   const setHill = () => {
     if (left) return HILL[dayTime].leftHill;
     else return HILL[dayTime].rightHill;
@@ -17,6 +20,4 @@ function Hill({ dayTime, left, right }) {
       </Bounce>
     </div>
   );
-}
-
-export default Hill;
+};

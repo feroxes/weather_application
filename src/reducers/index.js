@@ -1,11 +1,6 @@
 import { combineReducers } from 'redux';
 
-import background from './background';
 import forecast from './forecast';
-import searchResult from './searchResult';
+import app from './app.js';
 
-export default combineReducers({
-  background,
-  forecast,
-  searchResult
-});
+export default combineReducers({ forecast, app });

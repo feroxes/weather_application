@@ -2,9 +2,23 @@ export const API_KEY = '34e9e8865eb515573550395b2b961dff';
 export const PROXY = 'https://cors-anywhere.herokuapp.com/';
 export const ENDPOINT = 'https://api.darksky.net/forecast/';
 
-export const DEFAULT_CITY_NAME = 'Kyiv';
-export const KYIV_LAT = '50.450';
-export const KYIV_LNG = '30.5234';
+export const APP_STATES = {
+  Created: 'Created',
+  Active: 'Active',
+  LoadingData: 'LoadingData'
+};
+
+export const DEFAULT_CITY = {
+  country: 'UA',
+  lat: '50.45466',
+  lng: '30.5238',
+  name: 'Kyiv'
+};
+
+export const DAY_TIME = {
+  Day: 'day',
+  Night: 'night'
+};
 
 export const MAX_ICON_NAME_LENGTH = 2;
 
