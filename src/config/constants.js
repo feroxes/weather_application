@@ -15,6 +15,11 @@ export const DEFAULT_CITY = {
   name: 'Kyiv'
 };
 
+export const DAY_TIME = {
+  Day: 'day',
+  Night: 'night'
+};
+
 export const MAX_ICON_NAME_LENGTH = 2;
 
 export const SLOW_WIND_SPEED = 8;

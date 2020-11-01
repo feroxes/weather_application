@@ -6,7 +6,7 @@ import { Hill } from '../../components/hill/hill.js';
 import { Cloud } from '../../components/cloud/cloud.js';
 import './background.scss';
 
-export const Background = () => {
+export const Background = ({ children }) => {
   const dayTime = useSelector(state => state.app.dayTime);
   const cloudPosition = [
     { top: '5vh', right: '75vw' },
@@ -23,6 +23,7 @@ export const Background = () => {
       </Bounce>
       <Hill left="-20px" />
       <Hill right="-20px" />
+      {children}
     </div>
   );
 };

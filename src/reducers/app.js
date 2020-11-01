@@ -1,10 +1,10 @@
 import { INIT_APP, SET_APP_STATE, SET_SELECTED_CITY } from '../actions/types.js';
-import { APP_STATES, DEFAULT_CITY } from '../config/constants.js';
+import { APP_STATES, DEFAULT_CITY, DAY_TIME } from '../config/constants.js';
 
 const initialState = {
   appState: APP_STATES.Created,
   selectedCity: DEFAULT_CITY,
-  dayTime: null
+  dayTime: DAY_TIME.Day
 };
 
 export default (state = initialState, { type, payload }) => {
