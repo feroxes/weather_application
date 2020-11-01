@@ -1,9 +1,13 @@
 import React from 'react';
-import './detailsScreen.scss';
+import { useSelector } from 'react-redux';
+import './details-screen.scss';
 
 import { SLOW_WIND_SPEED, MEDIUM_WIND_SPEED, WIND_MILL } from '../../config/constants.js';
 
-function DetailsScreen({ dayTime, currentWeather }) {
+export const DetailsScreen = () => {
+  const dayTime = useSelector(state => state.app.dayTime);
+  const currentWeather = useSelector(state => state.forecast.currentWeather);
+
   const {
     cloudCover,
     humidity,
@@ -94,6 +98,4 @@ function DetailsScreen({ dayTime, currentWeather }) {
       </div>
     </div>
   );
-}
-
-export default DetailsScreen;
+};

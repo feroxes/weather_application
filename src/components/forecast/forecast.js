@@ -1,15 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
+import { formatDate } from '../../helper/helper.js';
 import { MAX_ICON_NAME_LENGTH } from '../../config/constants.js';
-
 import './forecast.scss';
 
-function Forecast({ forecast }) {
-  const formatDate = date => {
-    const currentDate = new Date(date * 1000);
-    const options = { day: 'numeric', month: 'long' };
-    return currentDate.toLocaleDateString('en-GB', options);
-  };
+export const Forecast = () => {
+  const forecast = useSelector(state => state.forecast.forecast);
 
   const formatPrecipitationsIcon = icon => {
     if (!icon) return ' ';
@@ -25,13 +22,14 @@ function Forecast({ forecast }) {
     <div className="screen-forecast">
       {forecast
         ? forecast.map((item, index) => {
+            const { time, icon, apparentTemperatureMax } = item;
             return (
               <div className="forecast-item" key={index}>
-                <p className="forecast-date">{formatDate(item.time)}</p>
-                <p className="forecast-precipitations">{formatPrecipitationsIcon(item.icon)}</p>
+                <p className="forecast-date">{formatDate(time)}</p>
+                <p className="forecast-precipitations">{formatPrecipitationsIcon(icon)}</p>
                 <div className="forecast-temperature">
-                  <img src={require(`../../assets/images/icons/${item.icon}.png`)} alt="icon" />
-                  <p> {Math.round(item.apparentTemperatureMax)} °</p>
+                  <img src={require(`../../assets/images/icons/${icon}.png`)} alt="icon" />
+                  <p> {Math.round(apparentTemperatureMax)} °</p>
                 </div>
               </div>
             );
@@ -39,6 +37,4 @@ function Forecast({ forecast }) {
         : 'Loading...'}
     </div>
   );
-}
-
-export default Forecast;
+};
