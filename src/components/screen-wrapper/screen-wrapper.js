@@ -11,7 +11,7 @@ const ScreenWrapperStyled = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: ${props => ` url(${props.theme.backgroundImage}) center no-repeat;`};
+  background: ${props => `url(${props.theme.backgroundImage}) center no-repeat;`};
   background-size: 100%;
 `;
 
