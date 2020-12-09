@@ -1,16 +1,4 @@
 @import "mixin";
-* {
-  box-sizing: border-box;
-  font-family: PFDinTextPro, sans-serif;
-}
-
-.App {
-  position: relative;
-  overflow: hidden;
-  .carousel {
-    height: 100% !important;
-  }
-}
 
 .blur-background {
   position: relative;
@@ -37,12 +25,4 @@
 }
 .blur-background-night:before {
   background: url("../../assets/images/screen/screen-background-night-2.png") center no-repeat;
-}
-
-.eagle {
-  width: 80px;
-  position: absolute;
-  top: 80px;
-  right: -100px;
-  z-index: 1;
 }

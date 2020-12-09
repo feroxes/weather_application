@@ -1,47 +1,4 @@
 @import "../../assets/scss/mixin";
-.screen-wrapper {
-  @include screen-size;
-  border-radius: 30px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.star {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  top: 110px;
-  right: 50px;
-}
-.star-day {
-  background-color: #fef9e5;
-  .inside-circle {
-    width: 115px;
-    height: 115px;
-    background-color: #fff;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    filter: blur(8px);
-  }
-}
-.star-night {
-  box-shadow: 15px 15px 0 0 #e6eef2;
-  transform: rotate(90deg);
-}
-.screen-wrapper-day {
-  background: url("../../assets/images/screen/screen-background-day-2.png") center no-repeat;
-  background-size: 100%;
-}
-.screen-wrapper-night {
-  background: url("../../assets/images/screen/screen-background-night-2.png") center no-repeat;
-  background-size: 100%;
-}
 @media screen and (max-width: 425px){
   .star {
     width: 100px;

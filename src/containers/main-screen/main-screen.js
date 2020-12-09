@@ -9,8 +9,7 @@ export const MainScreen = () => {
   const currentWeather = useSelector(state => state.forecast.currentWeather);
   const selectedCity = useSelector(state => state.app.selectedCity);
 
-  const { icon, apparentTemperature } = currentWeather;
-
+  const { icon, temperature } = currentWeather;
   return (
     <div className="main-screen-wrapper">
       <div className="screen-weather">
@@ -20,7 +19,7 @@ export const MainScreen = () => {
         <div className="screen-weather-info">
           <h2 className="weather-info-location">{selectedCity.name}</h2>
           <p className="weather-info-temperature">
-            {Math.round(apparentTemperature)} °<sup>C</sup>
+            {Math.round(temperature)} °<sup>C</sup>
           </p>
         </div>
       </div>
