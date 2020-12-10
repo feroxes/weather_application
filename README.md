@@ -1,9 +1,15 @@
 ## Weather application
 
-<a href="https://feroxes.gitlab.io/weather-app/">Demo</a>
+<a href="https://feroxes.github.io/weather_application/">Demo</a>
 
-This is an application, written on React.js + Redux. 
-It shows current weather and weather forecast.
+Used technologies:
+ - React
+ - React Hooks
+ - Redux
+ - Saga   
+ - Styled Components
+
+This application shows current weather and weather forecast.
 You can choose any city to view the weather.
 
 Enjoy!
