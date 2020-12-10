@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setSelectedCity } from '../../actions/app';
 
-import './search-screen.scss';
+import { BlurBackground } from '../../assets/styles/App.js';
 import cities from 'cities.json';
+import {
+  AutocompleteDropdown,
+  AutocompleteItem,
+  Powered,
+  SearchField,
+  SearchScreenHeader,
+  SearchScreenWrapper
+} from './styled.js';
 
 export const SearchScreen = ({ setSlideIndex }) => {
   const [searchField, setSearchField] = useState('');
   const [autocompleteResult, setAutocompleteResult] = useState([]);
-
-  const dayTime = useSelector(state => state.app.dayTime);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,43 +33,36 @@ export const SearchScreen = ({ setSlideIndex }) => {
   };
 
   return (
-    <div className={`blur-background blur-background-${dayTime}`}>
-      <div className="search-screen-wrapper">
-        <h2 className="search-screen-header">Search city</h2>
-        <input
+    <BlurBackground>
+      <SearchScreenWrapper>
+        <SearchScreenHeader>Search city</SearchScreenHeader>
+        <SearchField
           placeholder="Enter your city..."
-          className="search-field"
           value={searchField}
           onChange={e => setSearchField(e.target.value.toLowerCase())}
           type="text"
           name="search-field"
         />
-        <div className="autocomplete-dropdown">
+        <AutocompleteDropdown>
           {autocompleteResult.length && searchField.length
             ? autocompleteResult.map((item, index) => {
                 const { name, country } = item;
                 return (
-                  <div
+                  <AutocompleteItem
                     key={index}
-                    className="autocomplete-item"
                     onClick={() => handleOnCityClick(item)}
                     onTouchStart={() => handleOnCityClick(item)}
                   >
                     {name}, {country}
-                  </div>
+                  </AutocompleteItem>
                 );
               })
             : ''}
-        </div>
-      </div>
-      <a
-        className="powered"
-        href="https://darksky.net/poweredby/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+        </AutocompleteDropdown>
+      </SearchScreenWrapper>
+      <Powered href="https://darksky.net/poweredby/" target="_blank" rel="noopener noreferrer">
         Powered by Dark Sky
-      </a>
-    </div>
+      </Powered>
+    </BlurBackground>
   );
 };

@@ -1,9 +1,4 @@
 import React from 'react';
-import './cloud.scss';
-import { useSelector } from 'react-redux';
+import { CloudStyled } from './styled.js';
 
-export const Cloud = ({ top, left, right }) => {
-  const dayTime = useSelector(state => state.app.dayTime);
-
-  return <div className={`cloud cloud-${dayTime}`} style={{ top, left, right }} />;
-};
+export const Cloud = ({ top, left, right }) => <CloudStyled top={top} left={left} right={right} />;
