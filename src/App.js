@@ -76,7 +76,7 @@ export const App = () => {
             {appState === APP_STATES.Active ? (
               <ScreenWrapper>
                 <CarouselStyled
-                  slideIndex={2}
+                  slideIndex={slideIndex}
                   afterSlide={item => setSlideIndex(item)}
                   renderCenterLeftControls={() => <button style={{ display: 'none' }} />}
                   renderCenterRightControls={() => <button style={{ display: 'none' }} />}
