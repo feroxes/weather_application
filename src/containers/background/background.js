@@ -1,17 +1,9 @@
 import React from 'react';
 import Bounce from 'react-reveal/Bounce';
-import styled from 'styled-components';
 
+import { BackgroundWrapper } from './styled.js';
 import { Hill } from '../../components/hill/hill.js';
 import { Cloud } from '../../components/cloud/cloud.js';
-
-const BackgroundWrapper = styled.div`
-  height: 100vh;
-  width: 100%;
-  background-size: cover;
-  position: relative;
-  background: ${props => props.theme.backgroundWrapper};
-`;
 
 export const Background = ({ children }) => {
   const cloudPositions = [
