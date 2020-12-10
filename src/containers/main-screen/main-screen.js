@@ -3,28 +3,35 @@ import { useSelector } from 'react-redux';
 
 import { Forecast } from '../../components/forecast/forecast.js';
 
-import './main-screen.scss';
+import {
+  MainScreenWrapper,
+  ScreenWeather,
+  ScreenWeatherIcon,
+  ScreenWeatherInfo,
+  WeatherInfoLocation,
+  WeatherInfoTemperature,
+  WeatherInfoTemperatureSup
+} from './styled.js';
 
 export const MainScreen = () => {
   const currentWeather = useSelector(state => state.forecast.currentWeather);
   const selectedCity = useSelector(state => state.app.selectedCity);
 
-  const { icon, apparentTemperature } = currentWeather;
-
+  const { icon, temperature } = currentWeather;
   return (
-    <div className="main-screen-wrapper">
-      <div className="screen-weather">
-        <div className="screen-weather-icon">
+    <MainScreenWrapper>
+      <ScreenWeather>
+        <ScreenWeatherIcon>
           <img src={require(`../../assets/images/icons/${icon}.png`)} alt="icon" />
-        </div>
-        <div className="screen-weather-info">
-          <h2 className="weather-info-location">{selectedCity.name}</h2>
-          <p className="weather-info-temperature">
-            {Math.round(apparentTemperature)} °<sup>C</sup>
-          </p>
-        </div>
-      </div>
+        </ScreenWeatherIcon>
+        <ScreenWeatherInfo>
+          <WeatherInfoLocation>{selectedCity.name}</WeatherInfoLocation>
+          <WeatherInfoTemperature>
+            {Math.round(temperature)} °<WeatherInfoTemperatureSup>C</WeatherInfoTemperatureSup>
+          </WeatherInfoTemperature>
+        </ScreenWeatherInfo>
+      </ScreenWeather>
       <Forecast />
-    </div>
+    </MainScreenWrapper>
   );
 };

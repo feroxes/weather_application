@@ -1,14 +1,13 @@
 import React from 'react';
-
-import './loading-spinner.scss';
+import { LoadingSpinnerStyled, LoadingSpinnerImg, LoadingSpinnerHeader } from './styled.js';
 
 export const LoadingSpinner = () => {
   return (
     <>
-      <div className={'loading-spinner'}>
-        <img src={require('../../assets/images/screen/eagle.gif')} alt="Eagle" />
-        <h2>Loading...</h2>
-      </div>
+      <LoadingSpinnerStyled>
+        <LoadingSpinnerImg src={require('../../assets/images/screen/eagle.gif')} alt="Eagle" />
+        <LoadingSpinnerHeader>Loading...</LoadingSpinnerHeader>
+      </LoadingSpinnerStyled>
     </>
   );
 };

@@ -1,5 +1,5 @@
 export const API_KEY = '34e9e8865eb515573550395b2b961dff';
-export const PROXY = 'https://cors-anywhere.herokuapp.com/';
+export const PROXY = 'https://agile-everglades-29730.herokuapp.com/';
 export const ENDPOINT = 'https://api.darksky.net/forecast/';
 
 export const APP_STATES = {

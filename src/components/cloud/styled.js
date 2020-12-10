@@ -1,9 +1,14 @@
-@import '../../assets/scss/colors';
-.cloud {
+import styled from 'styled-components';
+
+export const CloudStyled = styled.div`
   width: 12vw;
   height: 12vw;
   border-radius: 100%;
   position: absolute;
+  background-color: ${props => props.theme.cloudBackgroundColor};
+  top: ${props => props.top};
+  left: ${props => props.left};
+  right: ${props => props.right};
   &:before {
     content: '';
     display: block;
@@ -13,6 +18,7 @@
     position: absolute;
     top: 2vw;
     right: 8vw;
+    background-color: ${props => props.theme.cloudBackgroundColor};
   }
   &:after {
     content: '';
@@ -23,25 +29,6 @@
     position: absolute;
     top: 2vw;
     left: 8vw;
+    background-color: ${props => props.theme.cloudBackgroundColor};
   }
-}
-
-.cloud-day {
-  background-color: $white;
-  &:after {
-    background-color: $white;
-  }
-  &:before {
-    background-color: $white;
-  }
-}
-
-.cloud-night {
-  background-color: $light-blue;
-  &:after {
-    background-color: $light-blue;
-  }
-  &:before {
-    background-color: $light-blue;
-  }
-}
+`;

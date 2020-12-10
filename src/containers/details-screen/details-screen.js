@@ -1,7 +1,25 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import './details-screen.scss';
 
+import {
+  DetailsScreenWrapper,
+  DetailsSectionTitle,
+  DetailsBlock,
+  DetailsIcon,
+  DetailsInfo,
+  DetailsInfoItem,
+  PrecipitationBlock,
+  PrecipitationItem,
+  PrecipitationItemImg,
+  WindAndPressureBlock,
+  Mills,
+  MillBig,
+  MillSmall,
+  WindSpeed,
+  Pressure,
+  DetailsSection
+} from './styled.js';
+import { BlurBackground } from '../../assets/styles/App.js';
 import { SLOW_WIND_SPEED, MEDIUM_WIND_SPEED, WIND_MILL } from '../../config/constants.js';
 
 export const DetailsScreen = () => {
@@ -27,75 +45,87 @@ export const DetailsScreen = () => {
   };
 
   return (
-    <div className={`blur-background blur-background-${dayTime}`}>
-      <div className="details-screen-wrapper">
-        <section className="details-section">
-          <h2 className="details-section-title">Details</h2>
+    <BlurBackground>
+      <DetailsScreenWrapper>
+        <DetailsSection>
+          <DetailsSectionTitle>Details</DetailsSectionTitle>
           <p>{summary}</p>
-          <div className="details-block">
-            <div className="details-icon">
+          <DetailsBlock>
+            <DetailsIcon>
               <img src={require(`../../assets/images/icons/${icon}.png`)} alt="Weather icon" />
-            </div>
-            <div className="details-info">
-              <div className="details-info-item">
+            </DetailsIcon>
+            <DetailsInfo>
+              <DetailsInfoItem>
                 <p>Humidity</p>
                 <span>{Math.round(humidity * 100)} %</span>
-              </div>
-              <div className="details-info-item">
+              </DetailsInfoItem>
+              <DetailsInfoItem>
                 <p>Cloudiness</p>
                 <span>{Math.round(cloudCover * 100)} %</span>
-              </div>
-              <div className="details-info-item">
+              </DetailsInfoItem>
+              <DetailsInfoItem>
                 <p>Visibility</p>
                 <span>{Math.round(visibility)} km</span>
-              </div>
-              <div className="details-info-item">
+              </DetailsInfoItem>
+              <DetailsInfoItem>
                 <p>UV Index</p>
                 <span>{uvIndex}</span>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className="details-section">
-          <h2 className="details-section-title">Precipitation</h2>
-          <div className="precipitation-block">
-            <div className="precipitation-item">
+              </DetailsInfoItem>
+            </DetailsInfo>
+          </DetailsBlock>
+        </DetailsSection>
+        <DetailsSection>
+          <DetailsSectionTitle>Precipitation</DetailsSectionTitle>
+          <PrecipitationBlock>
+            <PrecipitationItem>
               <p>Morning</p>
-              <img src={require('../../assets/images/icons/drop.png')} alt="Drop icon" />
+              <PrecipitationItemImg
+                src={require('../../assets/images/icons/drop.png')}
+                alt="Drop icon"
+              />
               <span>0 %</span>
-            </div>
-            <div className="precipitation-item">
+            </PrecipitationItem>
+            <PrecipitationItem>
               <p>Midday</p>
-              <img src={require('../../assets/images/icons/drop.png')} alt="Drop icon" />
+              <PrecipitationItemImg
+                src={require('../../assets/images/icons/drop.png')}
+                alt="Drop icon"
+              />
               <span>0 %</span>
-            </div>
-            <div className="precipitation-item">
+            </PrecipitationItem>
+            <PrecipitationItem>
               <p>Evening</p>
-              <img src={require('../../assets/images/icons/drop.png')} alt="Drop icon" />
+              <PrecipitationItemImg
+                src={require('../../assets/images/icons/drop.png')}
+                alt="Drop icon"
+              />
               <span>0 %</span>
-            </div>
-            <div className="precipitation-item">
+            </PrecipitationItem>
+            <PrecipitationItem>
               <p>Night</p>
-              <img src={require('../../assets/images/icons/drop.png')} alt="Drop icon" />
+              <PrecipitationItemImg
+                src={require('../../assets/images/icons/drop.png')}
+                alt="Drop icon"
+              />
               <span>0 %</span>
-            </div>
-          </div>
-        </section>
-        <section className="details-section">
-          <h2 className="details-section-title">Wind & Pressure</h2>
-          <div className="wind-and-pressure-block">
-            <div className="mills">
-              <img className="mill-big" src={setMillSpeed()} alt="Mill" />
-              <img className="mill-small" src={setMillSpeed()} alt="Mill" />
-              <p className="wind-speed">{windSpeed} mps</p>
-            </div>
-            <div className="pressure">
+            </PrecipitationItem>
+          </PrecipitationBlock>
+        </DetailsSection>
+        <DetailsSection>
+          <DetailsSectionTitle>Wind & Pressure</DetailsSectionTitle>
+          <WindAndPressureBlock>
+            <Mills>
+              <MillBig src={setMillSpeed()} alt="Mill" />
+              <MillSmall src={setMillSpeed()} alt="Mill" />
+              <WindSpeed>{windSpeed} mps</WindSpeed>
+            </Mills>
+            <Pressure>
               <p>Barometer</p>
               <span>{pressure} inches</span>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
+            </Pressure>
+          </WindAndPressureBlock>
+        </DetailsSection>
+      </DetailsScreenWrapper>
+    </BlurBackground>
   );
 };

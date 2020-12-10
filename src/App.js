@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 
 import { loadData } from './actions/forecast';
 import { initApp } from './actions/app.js';
@@ -13,14 +15,33 @@ import { ScreenWrapper } from './components/screen-wrapper/screen-wrapper.js';
 import { LoadingSpinner } from './components/loading-spinner/loading-spinner.js';
 import Carousel from 'nuka-carousel';
 
-import './assets/scss/index.scss';
+import GlobalStyle from './assets/styles/GlobalStyle.js';
+import { Themes } from './assets/styles/Themes.js';
 import { APP_STATES } from './config/constants.js';
+
+const AppStyled = styled.div`
+  position: relative;
+  overflow: hidden;
+`;
+
+const CarouselStyled = styled(Carousel)`
+  height: 100% !important;
+`;
+
+const Eagle = styled.img`
+  width: 80px;
+  position: absolute;
+  top: 80px;
+  right: -100px;
+  z-index: 1;
+`;
 
 export const App = () => {
   const [slideIndex, setSlideIndex] = useState(1);
 
   const selectedCity = useSelector(state => state.app.selectedCity);
   const appState = useSelector(state => state.app.appState);
+  const dayTime = useSelector(state => state.app.dayTime);
 
   const eagleRef = useRef(null);
   const dispatch = useDispatch();
@@ -47,33 +68,30 @@ export const App = () => {
 
   return (
     <>
-      <div className="App">
-        <Background>
-          {appState === APP_STATES.Active ? (
-            <ScreenWrapper>
-              <Carousel
-                className="carousel"
-                slideIndex={slideIndex}
-                afterSlide={item => setSlideIndex(item)}
-                renderCenterLeftControls={() => <button style={{ display: 'none' }} />}
-                renderCenterRightControls={() => <button style={{ display: 'none' }} />}
-              >
-                <SearchScreen setSlideIndex={setSlideIndex} />
-                <MainScreen />
-                <DetailsScreen />
-              </Carousel>
-            </ScreenWrapper>
-          ) : (
-            <LoadingSpinner />
-          )}
-        </Background>
-        <img
-          ref={eagleRef}
-          className="eagle"
-          src={require('./assets/images/screen/eagle.gif')}
-          alt="Eagle"
-        />
-      </div>
+      <ThemeProvider theme={Themes[dayTime]}>
+        <GlobalStyle />
+        <AppStyled>
+          <Background>
+            {appState === APP_STATES.Active ? (
+              <ScreenWrapper>
+                <CarouselStyled
+                  slideIndex={slideIndex}
+                  afterSlide={item => setSlideIndex(item)}
+                  renderCenterLeftControls={() => <button style={{ display: 'none' }} />}
+                  renderCenterRightControls={() => <button style={{ display: 'none' }} />}
+                >
+                  <SearchScreen setSlideIndex={setSlideIndex} />
+                  <MainScreen />
+                  <DetailsScreen />
+                </CarouselStyled>
+              </ScreenWrapper>
+            ) : (
+              <LoadingSpinner />
+            )}
+          </Background>
+          <Eagle ref={eagleRef} src={require('./assets/images/screen/eagle.gif')} alt="Eagle" />
+        </AppStyled>
+      </ThemeProvider>
     </>
   );
 };
