@@ -1,0 +1,1 @@
+{"version":3,"sources":["hill.scss"],"names":[],"mappings":"AACA,qBACI,UAAW,CACX,QAAS,CACT,iBAAkB","file":"main.92674cd6.chunk.css","sourcesContent":["\n.background-hill-img {\n    width: 40vw;\n    bottom: 0;\n    position: absolute;\n  }\n\n\n"]}
