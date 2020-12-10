@@ -17,7 +17,6 @@ import Carousel from 'nuka-carousel';
 
 import GlobalStyle from './assets/styles/GlobalStyle.js';
 import { Themes } from './assets/styles/Themes.js';
-import './assets/scss/index.scss';
 import { APP_STATES } from './config/constants.js';
 
 const AppStyled = styled.div`

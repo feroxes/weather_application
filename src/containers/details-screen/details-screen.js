@@ -19,6 +19,7 @@ import {
   Pressure,
   DetailsSection
 } from './styled.js';
+import { BlurBackground } from '../../assets/styles/App.js';
 import { SLOW_WIND_SPEED, MEDIUM_WIND_SPEED, WIND_MILL } from '../../config/constants.js';
 
 export const DetailsScreen = () => {
@@ -44,7 +45,7 @@ export const DetailsScreen = () => {
   };
 
   return (
-    <div className={`blur-background blur-background-${dayTime}`}>
+    <BlurBackground>
       <DetailsScreenWrapper>
         <DetailsSection>
           <DetailsSectionTitle>Details</DetailsSectionTitle>
@@ -125,6 +126,6 @@ export const DetailsScreen = () => {
           </WindAndPressureBlock>
         </DetailsSection>
       </DetailsScreenWrapper>
-    </div>
+    </BlurBackground>
   );
 };
