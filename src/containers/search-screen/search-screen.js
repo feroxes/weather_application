@@ -60,8 +60,12 @@ export const SearchScreen = ({ setSlideIndex }) => {
             : ''}
         </AutocompleteDropdownStyled>
       </SearchScreenWrapper>
-      <PoweredStyled href="https://darksky.net/poweredby/" target="_blank" rel="noopener noreferrer">
-        PoweredStyled by Dark Sky
+      <PoweredStyled
+        href="https://darksky.net/poweredby/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Powered by Dark Sky
       </PoweredStyled>
     </BlurBackgroundStyled>
   );

@@ -19,4 +19,4 @@ export const setSelectedCity = data => {
     type: SET_SELECTED_CITY,
     payload: data
   };
-}
+};

@@ -15,7 +15,7 @@ import { ScreenWrapper } from './components/screen-wrapper/screen-wrapper.js';
 import { LoadingSpinner } from './components/loading-spinner/loading-spinner.js';
 
 import { APP_STATES, IMAGES } from './config/constants.js';
-import { getDayTime } from './helper/helper.js';
+import { getDayTime, setLSV } from './helper/helper.js';
 
 import GlobalStyle from './assets/styles/GlobalStyle.js';
 import { Themes } from './assets/styles/Themes.js';
@@ -36,7 +36,7 @@ export const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(initApp(getDayTime()));
+    dispatch(initApp({ dayTime: getDayTime(), activeLanguage: 'ua' }));
   }, [dispatch]);
 
   useEffect(() => {

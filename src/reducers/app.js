@@ -4,7 +4,8 @@ import { APP_STATES, DEFAULT_CITY, DAY_TIME } from '../config/constants.js';
 const initialState = {
   appState: APP_STATES.Created,
   selectedCity: DEFAULT_CITY,
-  dayTime: DAY_TIME.Day
+  dayTime: DAY_TIME.Day,
+  activeLanguage: null
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -12,7 +13,8 @@ export default (state = initialState, { type, payload }) => {
     case INIT_APP:
       return {
         ...state,
-        dayTime: payload
+        dayTime: payload.dayTime,
+        activeLanguage: payload.activeLanguage
       };
     case SET_APP_STATE:
       return {
