@@ -19,3 +19,8 @@ export const formatPrecipitationsIcon = icon => {
     } else return splitedIconName.join(' ');
   }
 };
+
+export const getLsv = value => {
+  const activeLanguage = window.navigator.language.split('-')[0];
+  return value[activeLanguage];
+};

@@ -20,6 +20,9 @@ import {
   DetailsSectionStyled
 } from './styled.js';
 import { BlurBackgroundStyled } from '../../assets/styles/App.js';
+
+import { Lsv } from '../../Lsv.js';
+import { getLsv } from '../../helper/helper.js';
 import { SLOW_WIND_SPEED, MEDIUM_WIND_SPEED, IMAGES } from '../../config/constants.js';
 
 export const DetailsScreen = () => {
@@ -47,7 +50,7 @@ export const DetailsScreen = () => {
     <BlurBackgroundStyled>
       <DetailsScreenWrapperStyled>
         <DetailsSectionStyled>
-          <DetailsSectionTitleStyled>Details</DetailsSectionTitleStyled>
+          <DetailsSectionTitleStyled>{getLsv(Lsv.detailScreen.details)}</DetailsSectionTitleStyled>
           <p>{summary}</p>
           <DetailsBlockStyled>
             <DetailsIconStyled>
@@ -55,60 +58,60 @@ export const DetailsScreen = () => {
             </DetailsIconStyled>
             <DetailsInfoStyled>
               <DetailsInfoItemStyled>
-                <p>Humidity</p>
+                <p>{getLsv(Lsv.detailScreen.humidity)}</p>
                 <span>{Math.round(humidity * 100)} %</span>
               </DetailsInfoItemStyled>
               <DetailsInfoItemStyled>
-                <p>Cloudiness</p>
+                <p>{getLsv(Lsv.detailScreen.cloudiness)}</p>
                 <span>{Math.round(cloudCover * 100)} %</span>
               </DetailsInfoItemStyled>
               <DetailsInfoItemStyled>
-                <p>Visibility</p>
+                <p>{getLsv(Lsv.detailScreen.visibility)}</p>
                 <span>{Math.round(visibility)} km</span>
               </DetailsInfoItemStyled>
               <DetailsInfoItemStyled>
-                <p>UV Index</p>
+                <p>{getLsv(Lsv.detailScreen.uvIndex)}</p>
                 <span>{uvIndex}</span>
               </DetailsInfoItemStyled>
             </DetailsInfoStyled>
           </DetailsBlockStyled>
         </DetailsSectionStyled>
         <DetailsSectionStyled>
-          <DetailsSectionTitleStyled>Precipitation</DetailsSectionTitleStyled>
+          <DetailsSectionTitleStyled>{getLsv(Lsv.detailScreen.precipitation)}</DetailsSectionTitleStyled>
           <PrecipitationBlockStyled>
             <PrecipitationItemStyled>
-              <p>Morning</p>
+              <p>{getLsv(Lsv.detailScreen.morning)}</p>
               <PrecipitationItemImgStyled src={IMAGES.icons('drop')} alt="Drop icon" />
               <span>0 %</span>
             </PrecipitationItemStyled>
             <PrecipitationItemStyled>
-              <p>Midday</p>
+              <p>{getLsv(Lsv.detailScreen.midday)}</p>
               <PrecipitationItemImgStyled src={IMAGES.icons('drop')} alt="Drop icon" />
               <span>0 %</span>
             </PrecipitationItemStyled>
             <PrecipitationItemStyled>
-              <p>Evening</p>
+              <p>{getLsv(Lsv.detailScreen.evening)}</p>
               <PrecipitationItemImgStyled src={IMAGES.icons('drop')} alt="Drop icon" />
               <span>0 %</span>
             </PrecipitationItemStyled>
             <PrecipitationItemStyled>
-              <p>Night</p>
+              <p>{getLsv(Lsv.detailScreen.night)}</p>
               <PrecipitationItemImgStyled src={IMAGES.icons('drop')} alt="Drop icon" />
               <span>0 %</span>
             </PrecipitationItemStyled>
           </PrecipitationBlockStyled>
         </DetailsSectionStyled>
         <DetailsSectionStyled>
-          <DetailsSectionTitleStyled>Wind & Pressure</DetailsSectionTitleStyled>
+          <DetailsSectionTitleStyled>{getLsv(Lsv.detailScreen.windPressure)}</DetailsSectionTitleStyled>
           <WindAndPressureBlockStyled>
             <MillsStyled>
               <MillBigStyled src={setMillSpeed()} alt="Mill" />
               <MillSmallStyled src={setMillSpeed()} alt="Mill" />
-              <WindSpeedStyled>{windSpeed} mps</WindSpeedStyled>
+              <WindSpeedStyled>{windSpeed} {getLsv(Lsv.detailScreen.mps)}</WindSpeedStyled>
             </MillsStyled>
             <PressureStyled>
-              <p>Barometer</p>
-              <span>{pressure} inches</span>
+              <p>{getLsv(Lsv.detailScreen.barometer)}</p>
+              <span>{pressure} {getLsv(Lsv.detailScreen.inches)}</span>
             </PressureStyled>
           </WindAndPressureBlockStyled>
         </DetailsSectionStyled>

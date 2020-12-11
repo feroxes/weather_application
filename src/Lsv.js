@@ -44,7 +44,7 @@ export const Lsv = {
     },
     midday: {
       en: 'Midday',
-      uk: 'Середина дня'
+      uk: 'Обід'
     },
     evening: {
       en: 'Evening',

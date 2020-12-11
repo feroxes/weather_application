@@ -1,5 +1,11 @@
 import React from 'react';
-import { LoadingSpinnerStyled, LoadingSpinnerImgStyled, LoadingSpinnerHeaderStyled } from './styled.js';
+import {
+  LoadingSpinnerStyled,
+  LoadingSpinnerImgStyled,
+  LoadingSpinnerHeaderStyled
+} from './styled.js';
+import { getLsv } from '../../helper/helper.js';
+import { Lsv } from '../../Lsv.js';
 import { IMAGES } from '../../config/constants.js';
 
 export const LoadingSpinner = () => {
@@ -7,7 +13,9 @@ export const LoadingSpinner = () => {
     <>
       <LoadingSpinnerStyled>
         <LoadingSpinnerImgStyled src={IMAGES.eagle} alt="Eagle" />
-        <LoadingSpinnerHeaderStyled>Loading...</LoadingSpinnerHeaderStyled>
+        <LoadingSpinnerHeaderStyled>
+          {getLsv(Lsv.loadingSpinner.loading)}
+        </LoadingSpinnerHeaderStyled>
       </LoadingSpinnerStyled>
     </>
   );

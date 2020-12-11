@@ -36,7 +36,7 @@ export const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(initApp({ dayTime: getDayTime(), activeLanguage: 'ua' }));
+    dispatch(initApp({ dayTime: getDayTime(), activeLanguage: 'uk' }));
   }, [dispatch]);
 
   useEffect(() => {

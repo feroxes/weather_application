@@ -28,6 +28,7 @@ export const SearchFieldStyled = styled.input`
   &::placeholder {
     color: ${Colors.white};
     opacity: 1;
+    text-transform: none;
   }
 `;
 
