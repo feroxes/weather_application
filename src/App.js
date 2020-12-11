@@ -17,7 +17,7 @@ import Carousel from 'nuka-carousel';
 
 import GlobalStyle from './assets/styles/GlobalStyle.js';
 import { Themes } from './assets/styles/Themes.js';
-import { APP_STATES } from './config/constants.js';
+import { APP_STATES, IMAGES } from './config/constants.js';
 
 const AppStyled = styled.div`
   position: relative;
@@ -89,7 +89,7 @@ export const App = () => {
               <LoadingSpinner />
             )}
           </Background>
-          <Eagle ref={eagleRef} src={require('./assets/images/screen/eagle.gif')} alt="Eagle" />
+          <Eagle ref={eagleRef} src={IMAGES.eagle} alt="Eagle" />
         </AppStyled>
       </ThemeProvider>
     </>

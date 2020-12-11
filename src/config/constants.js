@@ -26,19 +26,22 @@ export const SLOW_WIND_SPEED = 8;
 export const MEDIUM_WIND_SPEED = 13;
 
 //IMAGES
-export const HILL = {
-  day: {
-    leftHill: require('../assets/images/background/left-hill-day.png'),
-    rightHill: require('../assets/images/background/right-hill-day.png')
+export const IMAGES = {
+  hill: {
+    day: {
+      leftHill: require('../assets/images/background/left-hill-day.png'),
+      rightHill: require('../assets/images/background/right-hill-day.png')
+    },
+    night: {
+      leftHill: require('../assets/images/background/left-hill-night.png'),
+      rightHill: require('../assets/images/background/right-hill-night.png')
+    }
   },
-  night: {
-    leftHill: require('../assets/images/background/left-hill-night.png'),
-    rightHill: require('../assets/images/background/right-hill-night.png')
-  }
-};
-
-export const WIND_MILL = {
-  windmillSlow: require('../assets/images/icons/windmill-slow.gif'),
-  windmillMid: require('../assets/images/icons/windmill-mid.gif'),
-  windmillFast: require('../assets/images/icons/windmill-fast.gif')
+  wind_mill: {
+    windmillSlow: require('../assets/images/icons/windmill-slow.gif'),
+    windmillMid: require('../assets/images/icons/windmill-mid.gif'),
+    windmillFast: require('../assets/images/icons/windmill-fast.gif')
+  },
+  eagle: require('../assets/images/screen/eagle.gif'),
+  icons: icon => require(`../assets/images/icons/${icon}.png`)
 };

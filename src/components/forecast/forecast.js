@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import { formatDate, formatPrecipitationsIcon } from '../../helper/helper.js';
+import { IMAGES } from '../../config/constants.js';
 import {
   ScreenForecast,
   ForecastItem,
@@ -27,10 +28,7 @@ export const Forecast = () => {
                 {' '}
                 {Math.round(apparentTemperatureMax)} °
               </ForecastTemperatureTemp>
-              <ForecastTemperatureIcon
-                src={require(`../../assets/images/icons/${icon}.png`)}
-                alt="icon"
-              />
+              <ForecastTemperatureIcon src={IMAGES.icons(icon)} alt="icon" />
             </ForecastTemperature>
           </ForecastItem>
         );

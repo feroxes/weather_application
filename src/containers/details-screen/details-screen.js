@@ -20,7 +20,7 @@ import {
   DetailsSection
 } from './styled.js';
 import { BlurBackground } from '../../assets/styles/App.js';
-import { SLOW_WIND_SPEED, MEDIUM_WIND_SPEED, WIND_MILL } from '../../config/constants.js';
+import { SLOW_WIND_SPEED, MEDIUM_WIND_SPEED, IMAGES } from '../../config/constants.js';
 
 export const DetailsScreen = () => {
   const currentWeather = useSelector(state => state.forecast.currentWeather);
@@ -37,10 +37,10 @@ export const DetailsScreen = () => {
   } = currentWeather;
 
   const setMillSpeed = () => {
-    if (windSpeed <= SLOW_WIND_SPEED) return WIND_MILL.windmillSlow;
+    if (windSpeed <= SLOW_WIND_SPEED) return IMAGES.wind_mill.windmillSlow;
     else if (windSpeed > SLOW_WIND_SPEED && windSpeed <= MEDIUM_WIND_SPEED)
-      return WIND_MILL.windmillMid;
-    else if (windSpeed > MEDIUM_WIND_SPEED) return WIND_MILL.windmillFast;
+      return IMAGES.wind_mill.windmillMid;
+    else if (windSpeed > MEDIUM_WIND_SPEED) return IMAGES.wind_mill.windmillFast;
   };
 
   return (
@@ -51,7 +51,7 @@ export const DetailsScreen = () => {
           <p>{summary}</p>
           <DetailsBlock>
             <DetailsIcon>
-              <img src={require(`../../assets/images/icons/${icon}.png`)} alt="Weather icon" />
+              <img src={IMAGES.icons(icon)} alt="Weather icon" />
             </DetailsIcon>
             <DetailsInfo>
               <DetailsInfoItem>
@@ -78,34 +78,22 @@ export const DetailsScreen = () => {
           <PrecipitationBlock>
             <PrecipitationItem>
               <p>Morning</p>
-              <PrecipitationItemImg
-                src={require('../../assets/images/icons/drop.png')}
-                alt="Drop icon"
-              />
+              <PrecipitationItemImg src={IMAGES.icons('drop')} alt="Drop icon" />
               <span>0 %</span>
             </PrecipitationItem>
             <PrecipitationItem>
               <p>Midday</p>
-              <PrecipitationItemImg
-                src={require('../../assets/images/icons/drop.png')}
-                alt="Drop icon"
-              />
+              <PrecipitationItemImg src={IMAGES.icons('drop')} alt="Drop icon" />
               <span>0 %</span>
             </PrecipitationItem>
             <PrecipitationItem>
               <p>Evening</p>
-              <PrecipitationItemImg
-                src={require('../../assets/images/icons/drop.png')}
-                alt="Drop icon"
-              />
+              <PrecipitationItemImg src={IMAGES.icons('drop')} alt="Drop icon" />
               <span>0 %</span>
             </PrecipitationItem>
             <PrecipitationItem>
               <p>Night</p>
-              <PrecipitationItemImg
-                src={require('../../assets/images/icons/drop.png')}
-                alt="Drop icon"
-              />
+              <PrecipitationItemImg src={IMAGES.icons('drop')} alt="Drop icon" />
               <span>0 %</span>
             </PrecipitationItem>
           </PrecipitationBlock>

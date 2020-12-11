@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import { Forecast } from '../../components/forecast/forecast.js';
+import { IMAGES } from '../../config/constants.js';
 
 import {
   MainScreenWrapper,
@@ -22,7 +23,7 @@ export const MainScreen = () => {
     <MainScreenWrapper>
       <ScreenWeather>
         <ScreenWeatherIcon>
-          <img src={require(`../../assets/images/icons/${icon}.png`)} alt="icon" />
+          <img src={IMAGES.icons(icon)} alt="icon" />
         </ScreenWeatherIcon>
         <ScreenWeatherInfo>
           <WeatherInfoLocation>{selectedCity.name}</WeatherInfoLocation>
