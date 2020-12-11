@@ -1,7 +1,7 @@
 import React from 'react';
 import Bounce from 'react-reveal/Bounce';
 
-import { BackgroundWrapper } from './styled.js';
+import { BackgroundWrapperStyled } from './styled.js';
 import { Hill } from '../../components/hill/hill.js';
 import { Cloud } from '../../components/cloud/cloud.js';
 
@@ -13,7 +13,7 @@ export const Background = ({ children }) => {
   ];
 
   return (
-    <BackgroundWrapper>
+    <BackgroundWrapperStyled>
       <Bounce top>
         {cloudPositions.map((pos, i) => {
           return <Cloud top={pos.top} right={pos.right} key={i} />;
@@ -22,6 +22,6 @@ export const Background = ({ children }) => {
       <Hill left="-20px" />
       <Hill right="-20px" />
       {children}
-    </BackgroundWrapper>
+    </BackgroundWrapperStyled>
   );
 };

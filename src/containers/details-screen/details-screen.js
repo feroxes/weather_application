@@ -2,24 +2,24 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import {
-  DetailsScreenWrapper,
-  DetailsSectionTitle,
-  DetailsBlock,
-  DetailsIcon,
-  DetailsInfo,
-  DetailsInfoItem,
-  PrecipitationBlock,
-  PrecipitationItem,
-  PrecipitationItemImg,
-  WindAndPressureBlock,
-  Mills,
-  MillBig,
-  MillSmall,
-  WindSpeed,
-  Pressure,
-  DetailsSection
+  DetailsScreenWrapperStyled,
+  DetailsSectionTitleStyled,
+  DetailsBlockStyled,
+  DetailsIconStyled,
+  DetailsInfoStyled,
+  DetailsInfoItemStyled,
+  PrecipitationBlockStyled,
+  PrecipitationItemStyled,
+  PrecipitationItemImgStyled,
+  WindAndPressureBlockStyled,
+  MillsStyled,
+  MillBigStyled,
+  MillSmallStyled,
+  WindSpeedStyled,
+  PressureStyled,
+  DetailsSectionStyled
 } from './styled.js';
-import { BlurBackground } from '../../assets/styles/App.js';
+import { BlurBackgroundStyled } from '../../assets/styles/App.js';
 import { SLOW_WIND_SPEED, MEDIUM_WIND_SPEED, IMAGES } from '../../config/constants.js';
 
 export const DetailsScreen = () => {
@@ -44,75 +44,75 @@ export const DetailsScreen = () => {
   };
 
   return (
-    <BlurBackground>
-      <DetailsScreenWrapper>
-        <DetailsSection>
-          <DetailsSectionTitle>Details</DetailsSectionTitle>
+    <BlurBackgroundStyled>
+      <DetailsScreenWrapperStyled>
+        <DetailsSectionStyled>
+          <DetailsSectionTitleStyled>Details</DetailsSectionTitleStyled>
           <p>{summary}</p>
-          <DetailsBlock>
-            <DetailsIcon>
+          <DetailsBlockStyled>
+            <DetailsIconStyled>
               <img src={IMAGES.icons(icon)} alt="Weather icon" />
-            </DetailsIcon>
-            <DetailsInfo>
-              <DetailsInfoItem>
+            </DetailsIconStyled>
+            <DetailsInfoStyled>
+              <DetailsInfoItemStyled>
                 <p>Humidity</p>
                 <span>{Math.round(humidity * 100)} %</span>
-              </DetailsInfoItem>
-              <DetailsInfoItem>
+              </DetailsInfoItemStyled>
+              <DetailsInfoItemStyled>
                 <p>Cloudiness</p>
                 <span>{Math.round(cloudCover * 100)} %</span>
-              </DetailsInfoItem>
-              <DetailsInfoItem>
+              </DetailsInfoItemStyled>
+              <DetailsInfoItemStyled>
                 <p>Visibility</p>
                 <span>{Math.round(visibility)} km</span>
-              </DetailsInfoItem>
-              <DetailsInfoItem>
+              </DetailsInfoItemStyled>
+              <DetailsInfoItemStyled>
                 <p>UV Index</p>
                 <span>{uvIndex}</span>
-              </DetailsInfoItem>
-            </DetailsInfo>
-          </DetailsBlock>
-        </DetailsSection>
-        <DetailsSection>
-          <DetailsSectionTitle>Precipitation</DetailsSectionTitle>
-          <PrecipitationBlock>
-            <PrecipitationItem>
+              </DetailsInfoItemStyled>
+            </DetailsInfoStyled>
+          </DetailsBlockStyled>
+        </DetailsSectionStyled>
+        <DetailsSectionStyled>
+          <DetailsSectionTitleStyled>Precipitation</DetailsSectionTitleStyled>
+          <PrecipitationBlockStyled>
+            <PrecipitationItemStyled>
               <p>Morning</p>
-              <PrecipitationItemImg src={IMAGES.icons('drop')} alt="Drop icon" />
+              <PrecipitationItemImgStyled src={IMAGES.icons('drop')} alt="Drop icon" />
               <span>0 %</span>
-            </PrecipitationItem>
-            <PrecipitationItem>
+            </PrecipitationItemStyled>
+            <PrecipitationItemStyled>
               <p>Midday</p>
-              <PrecipitationItemImg src={IMAGES.icons('drop')} alt="Drop icon" />
+              <PrecipitationItemImgStyled src={IMAGES.icons('drop')} alt="Drop icon" />
               <span>0 %</span>
-            </PrecipitationItem>
-            <PrecipitationItem>
+            </PrecipitationItemStyled>
+            <PrecipitationItemStyled>
               <p>Evening</p>
-              <PrecipitationItemImg src={IMAGES.icons('drop')} alt="Drop icon" />
+              <PrecipitationItemImgStyled src={IMAGES.icons('drop')} alt="Drop icon" />
               <span>0 %</span>
-            </PrecipitationItem>
-            <PrecipitationItem>
+            </PrecipitationItemStyled>
+            <PrecipitationItemStyled>
               <p>Night</p>
-              <PrecipitationItemImg src={IMAGES.icons('drop')} alt="Drop icon" />
+              <PrecipitationItemImgStyled src={IMAGES.icons('drop')} alt="Drop icon" />
               <span>0 %</span>
-            </PrecipitationItem>
-          </PrecipitationBlock>
-        </DetailsSection>
-        <DetailsSection>
-          <DetailsSectionTitle>Wind & Pressure</DetailsSectionTitle>
-          <WindAndPressureBlock>
-            <Mills>
-              <MillBig src={setMillSpeed()} alt="Mill" />
-              <MillSmall src={setMillSpeed()} alt="Mill" />
-              <WindSpeed>{windSpeed} mps</WindSpeed>
-            </Mills>
-            <Pressure>
+            </PrecipitationItemStyled>
+          </PrecipitationBlockStyled>
+        </DetailsSectionStyled>
+        <DetailsSectionStyled>
+          <DetailsSectionTitleStyled>Wind & Pressure</DetailsSectionTitleStyled>
+          <WindAndPressureBlockStyled>
+            <MillsStyled>
+              <MillBigStyled src={setMillSpeed()} alt="Mill" />
+              <MillSmallStyled src={setMillSpeed()} alt="Mill" />
+              <WindSpeedStyled>{windSpeed} mps</WindSpeedStyled>
+            </MillsStyled>
+            <PressureStyled>
               <p>Barometer</p>
               <span>{pressure} inches</span>
-            </Pressure>
-          </WindAndPressureBlock>
-        </DetailsSection>
-      </DetailsScreenWrapper>
-    </BlurBackground>
+            </PressureStyled>
+          </WindAndPressureBlockStyled>
+        </DetailsSectionStyled>
+      </DetailsScreenWrapperStyled>
+    </BlurBackgroundStyled>
   );
 };

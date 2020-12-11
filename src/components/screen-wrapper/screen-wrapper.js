@@ -15,7 +15,7 @@ const ScreenWrapperStyled = styled.div`
   background-size: 100%;
 `;
 
-const Star = styled.div(props => ({
+const StarStyled = styled.div(props => ({
   position: 'absolute',
   width: '150px',
   height: '150px',
@@ -25,7 +25,7 @@ const Star = styled.div(props => ({
   ...props.theme.star
 }));
 
-const InsideCircle = styled.div`
+const InsideCircleStyled = styled.div`
   display: ${props => (props.theme.name === DAY_TIME.Day ? 'block' : 'none')};
   width: 115px;
   height: 115px;
@@ -42,9 +42,9 @@ export const ScreenWrapper = ({ children }) => {
   return (
     <ScreenWrapperStyled>
       <Zoom>
-        <Star>
-          <InsideCircle />
-        </Star>
+        <StarStyled>
+          <InsideCircleStyled />
+        </StarStyled>
       </Zoom>
       {children}
     </ScreenWrapperStyled>

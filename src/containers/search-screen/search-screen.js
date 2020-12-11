@@ -2,19 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setSelectedCity } from '../../actions/app';
 
-import { BlurBackground } from '../../assets/styles/App.js';
+import { BlurBackgroundStyled } from '../../assets/styles/App.js';
 import cities from 'cities.json';
 import {
-  AutocompleteDropdown,
-  AutocompleteItem,
-  Powered,
-  SearchField,
-  SearchScreenHeader,
+  AutocompleteDropdownStyled,
+  AutocompleteItemStyled,
+  PoweredStyled,
+  SearchFieldStyled,
+  SearchScreenHeaderStyled,
   SearchScreenWrapper
 } from './styled.js';
 
 export const SearchScreen = ({ setSlideIndex }) => {
-  const [searchField, setSearchField] = useState('');
+  const [searchField, setSearchFieldStyled] = useState('');
   const [autocompleteResult, setAutocompleteResult] = useState([]);
   const dispatch = useDispatch();
 
@@ -28,41 +28,41 @@ export const SearchScreen = ({ setSlideIndex }) => {
 
   const handleOnCityClick = item => {
     dispatch(setSelectedCity(item));
-    setSearchField('');
+    setSearchFieldStyled('');
     setSlideIndex(1);
   };
 
   return (
-    <BlurBackground>
+    <BlurBackgroundStyled>
       <SearchScreenWrapper>
-        <SearchScreenHeader>Search city</SearchScreenHeader>
-        <SearchField
+        <SearchScreenHeaderStyled>Search city</SearchScreenHeaderStyled>
+        <SearchFieldStyled
           placeholder="Enter your city..."
           value={searchField}
-          onChange={e => setSearchField(e.target.value.toLowerCase())}
+          onChange={e => setSearchFieldStyled(e.target.value.toLowerCase())}
           type="text"
           name="search-field"
         />
-        <AutocompleteDropdown>
+        <AutocompleteDropdownStyled>
           {autocompleteResult.length && searchField.length
             ? autocompleteResult.map((item, index) => {
                 const { name, country } = item;
                 return (
-                  <AutocompleteItem
+                  <AutocompleteItemStyled
                     key={index}
                     onClick={() => handleOnCityClick(item)}
                     onTouchStart={() => handleOnCityClick(item)}
                   >
                     {name}, {country}
-                  </AutocompleteItem>
+                  </AutocompleteItemStyled>
                 );
               })
             : ''}
-        </AutocompleteDropdown>
+        </AutocompleteDropdownStyled>
       </SearchScreenWrapper>
-      <Powered href="https://darksky.net/poweredby/" target="_blank" rel="noopener noreferrer">
-        Powered by Dark Sky
-      </Powered>
-    </BlurBackground>
+      <PoweredStyled href="https://darksky.net/poweredby/" target="_blank" rel="noopener noreferrer">
+        PoweredStyled by Dark Sky
+      </PoweredStyled>
+    </BlurBackgroundStyled>
   );
 };

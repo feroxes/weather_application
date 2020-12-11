@@ -7,13 +7,13 @@ export const SearchScreenWrapper = styled.div`
   color: ${Colors.white};
 `;
 
-export const SearchScreenHeader = styled.h2`
+export const SearchScreenHeaderStyled = styled.h2`
   font-size: 28px;
   font-weight: 300;
   margin-bottom: 10px;
 `;
 
-export const SearchField = styled.input`
+export const SearchFieldStyled = styled.input`
   width: 100%;
   height: 40px;
   padding: 0 20px;
@@ -31,14 +31,14 @@ export const SearchField = styled.input`
   }
 `;
 
-export const AutocompleteDropdown = styled.div`
+export const AutocompleteDropdownStyled = styled.div`
   width: 100%;
   padding: 10px 0;
   font-size: 18px;
   font-weight: 300;
 `;
 
-export const AutocompleteItem = styled.div`
+export const AutocompleteItemStyled = styled.div`
   padding: 7px 10px;
   &:hover {
     border-radius: 5px;
@@ -48,7 +48,7 @@ export const AutocompleteItem = styled.div`
   }
 `;
 
-export const Powered = styled.a`
+export const PoweredStyled = styled.a`
   position: absolute;
   color: ${Colors.white};
   z-index: 410;

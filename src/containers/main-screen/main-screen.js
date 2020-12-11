@@ -5,13 +5,13 @@ import { Forecast } from '../../components/forecast/forecast.js';
 import { IMAGES } from '../../config/constants.js';
 
 import {
-  MainScreenWrapper,
-  ScreenWeather,
-  ScreenWeatherIcon,
-  ScreenWeatherInfo,
-  WeatherInfoLocation,
-  WeatherInfoTemperature,
-  WeatherInfoTemperatureSup
+  MainScreenWrapperStyled,
+  ScreenWeatherStyled,
+  ScreenWeatherIconStyled,
+  ScreenWeatherInfoStyled,
+  WeatherInfoLocationStyled,
+  WeatherInfoTemperatureStyled,
+  WeatherInfoTemperatureSupStyled
 } from './styled.js';
 
 export const MainScreen = () => {
@@ -20,19 +20,19 @@ export const MainScreen = () => {
 
   const { icon, temperature } = currentWeather;
   return (
-    <MainScreenWrapper>
-      <ScreenWeather>
-        <ScreenWeatherIcon>
+    <MainScreenWrapperStyled>
+      <ScreenWeatherStyled>
+        <ScreenWeatherIconStyled>
           <img src={IMAGES.icons(icon)} alt="icon" />
-        </ScreenWeatherIcon>
-        <ScreenWeatherInfo>
-          <WeatherInfoLocation>{selectedCity.name}</WeatherInfoLocation>
-          <WeatherInfoTemperature>
-            {Math.round(temperature)} °<WeatherInfoTemperatureSup>C</WeatherInfoTemperatureSup>
-          </WeatherInfoTemperature>
-        </ScreenWeatherInfo>
-      </ScreenWeather>
+        </ScreenWeatherIconStyled>
+        <ScreenWeatherInfoStyled>
+          <WeatherInfoLocationStyled>{selectedCity.name}</WeatherInfoLocationStyled>
+          <WeatherInfoTemperatureStyled>
+            {Math.round(temperature)} °<WeatherInfoTemperatureSupStyled>C</WeatherInfoTemperatureSupStyled>
+          </WeatherInfoTemperatureStyled>
+        </ScreenWeatherInfoStyled>
+      </ScreenWeatherStyled>
       <Forecast />
-    </MainScreenWrapper>
+    </MainScreenWrapperStyled>
   );
 };

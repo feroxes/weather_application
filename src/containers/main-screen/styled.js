@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Colors } from '../../assets/styles/Variables.js';
 import { ScreenSize } from '../../assets/styles/Variables.js';
 
-export const MainScreenWrapper = styled.div`
+export const MainScreenWrapperStyled = styled.div`
   ${ScreenSize};
   display: flex;
   padding: 30px 30px 60px 30px;
@@ -11,35 +11,35 @@ export const MainScreenWrapper = styled.div`
   color: ${Colors.white};
 `;
 
-export const ScreenWeather = styled.div`
+export const ScreenWeatherStyled = styled.div`
   display: flex;
   margin: 30px;
 `;
 
-export const ScreenWeatherIcon = styled.div`
+export const ScreenWeatherIconStyled = styled.div`
   height: auto;
   display: flex;
   align-items: flex-end;
   margin-right: 10px;
 `;
 
-export const ScreenWeatherInfo = styled.div`
+export const ScreenWeatherInfoStyled = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-export const WeatherInfoLocation = styled.h2`
+export const WeatherInfoLocationStyled = styled.h2`
   font-size: 52px;
   font-weight: 400;
 `;
 
-export const WeatherInfoTemperature = styled.p`
+export const WeatherInfoTemperatureStyled = styled.p`
   font-size: 62px;
   font-weight: 300;
   line-height: 36px;
   margin-top: 10px;
 `;
 
-export const WeatherInfoTemperatureSup = styled.sup`
+export const WeatherInfoTemperatureSupStyled = styled.sup`
   font-size: 34px;
 `;

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { ScreenSize } from './Variables.js';
 import Carousel from 'nuka-carousel';
 
-export const BlurBackground = styled.div`
+export const BlurBackgroundStyled = styled.div`
   ${ScreenSize};
   position: relative;
   border-radius: 30px;
@@ -29,7 +29,7 @@ export const AppStyled = styled.div`
   overflow: hidden;
 `;
 
-export const Eagle = styled.img`
+export const EagleStyled = styled.img`
   width: 80px;
   position: absolute;
   top: 80px;

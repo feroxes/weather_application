@@ -14,10 +14,10 @@ export const LoadingSpinnerStyled = styled.div`
   left: 0;
 `;
 
-export const LoadingSpinnerImg = styled.img`
+export const LoadingSpinnerImgStyled = styled.img`
   width: 150px;
 `;
 
-export const LoadingSpinnerHeader = styled.h2`
+export const LoadingSpinnerHeaderStyled = styled.h2`
   font-size: 24px;
 `;

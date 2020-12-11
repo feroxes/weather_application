@@ -19,7 +19,7 @@ import { getDayTime } from './helper/helper.js';
 
 import GlobalStyle from './assets/styles/GlobalStyle.js';
 import { Themes } from './assets/styles/Themes.js';
-import { AppStyled, Eagle } from './assets/styles/App.js';
+import { AppStyled, EagleStyled } from './assets/styles/App.js';
 
 const CarouselStyled = styled(Carousel)`
   height: 100% !important;
@@ -78,7 +78,7 @@ export const App = () => {
               <LoadingSpinner />
             )}
           </Background>
-          <Eagle ref={eagleRef} src={IMAGES.eagle} alt="Eagle" />
+          <EagleStyled ref={eagleRef} src={IMAGES.eagle} alt="EagleStyled" />
         </AppStyled>
       </ThemeProvider>
     </>

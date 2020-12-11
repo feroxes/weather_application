@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Colors } from '../../assets/styles/Variables.js';
 
-export const DetailsScreenWrapper = styled.div`
+export const DetailsScreenWrapperStyled = styled.div`
   z-index: 3;
   padding: 40px;
   color: ${Colors.white};
@@ -13,7 +13,7 @@ export const DetailsScreenWrapper = styled.div`
   }
 `;
 
-export const DetailsSection = styled.section`
+export const DetailsSectionStyled = styled.section`
   &:not(:first-child) {
     margin-top: 50px;
   }
@@ -24,7 +24,7 @@ export const DetailsSection = styled.section`
   }
 `;
 
-export const DetailsSectionTitle = styled.h2`
+export const DetailsSectionTitleStyled = styled.h2`
   font-size: 28px;
   font-weight: 300;
   margin-bottom: 10px;
@@ -34,34 +34,34 @@ export const DetailsSectionTitle = styled.h2`
   }
 `;
 
-export const DetailsBlock = styled.div`
+export const DetailsBlockStyled = styled.div`
   width: 100%;
   display: flex;
 `;
 
-export const DetailsIcon = styled.div`
+export const DetailsIconStyled = styled.div`
   width: 45%;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-export const DetailsInfo = styled.div`
+export const DetailsInfoStyled = styled.div`
   width: 55%;
 `;
 
-export const DetailsInfoItem = styled.div`
+export const DetailsInfoItemStyled = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 10px 0;
 `;
 
-export const PrecipitationBlock = styled.div`
+export const PrecipitationBlockStyled = styled.div`
   display: flex;
   width: 100%;
 `;
 
-export const PrecipitationItem = styled.div`
+export const PrecipitationItemStyled = styled.div`
   width: 25%;
   display: flex;
   flex-direction: column;
@@ -69,36 +69,36 @@ export const PrecipitationItem = styled.div`
   align-items: center;
 `;
 
-export const PrecipitationItemImg = styled.img`
+export const PrecipitationItemImgStyled = styled.img`
   margin: 10px 0;
 `;
 
-export const WindAndPressureBlock = styled.div`
+export const WindAndPressureBlockStyled = styled.div`
   display: flex;
   justify-content: space-between;
 `;
 
-export const Mills = styled.div`
+export const MillsStyled = styled.div`
   position: relative;
 `;
 
-export const MillBig = styled.img`
+export const MillBigStyled = styled.img`
   width: 80px;
   position: relative;
 `;
 
-export const MillSmall = styled.img`
+export const MillSmallStyled = styled.img`
   width: 50px;
   left: -20px;
 `;
 
-export const WindSpeed = styled.p`
+export const WindSpeedStyled = styled.p`
   position: absolute;
   top: 0;
   right: 0;
 `;
 
-export const Pressure = styled.div`
+export const PressureStyled = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
