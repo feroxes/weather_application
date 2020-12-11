@@ -1,82 +1,80 @@
-import { DetailsSectionTitleStyled } from './containers/details-screen/styled.js';
-
 export const Lsv = {
   searchScreen: {
     header: {
       en: 'Search city by name',
-      ua: 'Пошук міста за назвою'
+      uk: 'Пошук міста за назвою'
     },
     enterCity: {
       en: 'Enter city name...',
-      ua: 'Введіть назву міста...'
+      uk: 'Введіть назву міста...'
     },
     poweredBy: {
       en: 'Powered by Dark Sky',
-      ua: 'Дані надав Dark Sky'
+      uk: 'Дані надав Dark Sky'
     }
   },
   detailScreen: {
     details: {
       en: 'Details',
-      ua: 'Деталі'
+      uk: 'Деталі'
     },
     humidity: {
       en: 'Humidity',
-      ua: 'Вологість'
+      uk: 'Вологість'
     },
     cloudiness: {
       en: 'Cloudiness',
-      ua: 'Хмарність'
+      uk: 'Хмарність'
     },
     visibility: {
       en: 'Visibility',
-      ua: 'Видимість'
+      uk: 'Видимість'
     },
     uvIndex: {
       en: 'UV Index',
-      ua: 'Індекс УФ'
+      uk: 'Індекс УФ'
     },
     precipitation: {
       en: 'Precipitation',
-      ua: 'Опади'
+      uk: 'Опади'
     },
     morning: {
       en: 'Morning',
-      ua: 'Ранок'
+      uk: 'Ранок'
     },
     midday: {
       en: 'Midday',
-      ua: 'Середина дня'
+      uk: 'Середина дня'
     },
     evening: {
       en: 'Evening',
-      ua: 'Вечір'
+      uk: 'Вечір'
     },
     night: {
       en: 'Night',
-      ua: 'Ніч'
+      uk: 'Ніч'
     },
     windPressure: {
       en: 'Wind & Pressure',
-      ua: 'Вітер та Тиск'
+      uk: 'Вітер та Тиск'
     },
     mps: {
       en: 'mps',
-      ua: 'м/c'
+      uk: 'м/c'
     },
     barometer: {
       en: 'Barometer',
-      ua: 'Барометр'
+      uk: 'Барометр'
     },
     inches: {
       en: 'inches',
-      ua: 'дюймів'
+      uk: 'дюймів'
     }
   },
   loadingSpinner: {
     loading: {
       en: 'Loading...',
-      ua: 'Іде завантаження...'
+      uk: 'Іде завантаження...'
     }
   }
 };
