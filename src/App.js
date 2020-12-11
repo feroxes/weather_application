@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
+import Carousel from 'nuka-carousel';
 
 import { loadData } from './actions/forecast';
 import { initApp } from './actions/app.js';
-import { getDayTime } from './helper/helper.js';
 
 import { Background } from './containers/background/background.js';
 import { SearchScreen } from './containers/search-screen/search-screen.js';
@@ -13,27 +13,16 @@ import { MainScreen } from './containers/main-screen/main-screen.js';
 import { DetailsScreen } from './containers/details-screen/details-screen.js';
 import { ScreenWrapper } from './components/screen-wrapper/screen-wrapper.js';
 import { LoadingSpinner } from './components/loading-spinner/loading-spinner.js';
-import Carousel from 'nuka-carousel';
+
+import { APP_STATES, IMAGES } from './config/constants.js';
+import { getDayTime } from './helper/helper.js';
 
 import GlobalStyle from './assets/styles/GlobalStyle.js';
 import { Themes } from './assets/styles/Themes.js';
-import { APP_STATES, IMAGES } from './config/constants.js';
-
-const AppStyled = styled.div`
-  position: relative;
-  overflow: hidden;
-`;
+import { AppStyled, Eagle } from './assets/styles/App.js';
 
 const CarouselStyled = styled(Carousel)`
   height: 100% !important;
-`;
-
-const Eagle = styled.img`
-  width: 80px;
-  position: absolute;
-  top: 80px;
-  right: -100px;
-  z-index: 1;
 `;
 
 export const App = () => {

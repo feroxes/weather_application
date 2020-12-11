@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { ScreenSize } from './Variables.js';
+import Carousel from 'nuka-carousel';
 
 export const BlurBackground = styled.div`
   ${ScreenSize};
@@ -21,4 +22,17 @@ export const BlurBackground = styled.div`
     z-index: 3;
     background: ${props => `url(${props.theme.backgroundImage}) center no-repeat`};
   }
+`;
+
+export const AppStyled = styled.div`
+  position: relative;
+  overflow: hidden;
+`;
+
+export const Eagle = styled.img`
+  width: 80px;
+  position: absolute;
+  top: 80px;
+  right: -100px;
+  z-index: 1;
 `;
