@@ -20,6 +20,7 @@ import { getDayTime, getNavigatorLanguage } from './helper/helper.js';
 import GlobalStyle from './assets/styles/GlobalStyle.js';
 import { Themes } from './assets/styles/Themes.js';
 import { AppStyled, EagleStyled } from './assets/styles/App.js';
+import { LanguageSelector } from './components/language-selector/language-selector.js';
 
 const CarouselStyled = styled(Carousel)`
   height: 100% !important;
@@ -60,6 +61,7 @@ export const App = () => {
       <ThemeProvider theme={Themes[dayTime]}>
         <GlobalStyle />
         <AppStyled>
+          <LanguageSelector />
           <Background>
             {appState === APP_STATES.Active ? (
               <ScreenWrapper>

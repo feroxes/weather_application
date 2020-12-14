@@ -20,6 +20,11 @@ export const DAY_TIME = {
   Night: 'night'
 };
 
+export const SUPPORTED_LANGUAGES = [
+  { code: 'en', name: { en: 'English', uk: 'Англійська' } },
+  { code: 'uk', name: { en: 'Ukrainian', uk: 'Українська' } }
+];
+
 export const MAX_ICON_NAME_LENGTH = 2;
 
 export const SLOW_WIND_SPEED = 8;
