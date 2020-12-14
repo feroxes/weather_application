@@ -1,4 +1,4 @@
-import { INIT_APP, SET_APP_STATE, SET_SELECTED_CITY } from '../actions/types.js';
+import { INIT_APP, SET_APP_STATE, SET_SELECTED_CITY, SET_ACTIVE_LANGUAGE } from '../actions/types.js';
 import { APP_STATES, DEFAULT_CITY, DAY_TIME } from '../config/constants.js';
 
 const initialState = {
@@ -25,6 +25,11 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         selectedCity: payload
+      };
+    case SET_ACTIVE_LANGUAGE:
+      return {
+        ...state,
+        activeLanguage: payload
       };
     default:
       return state;

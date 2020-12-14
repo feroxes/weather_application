@@ -20,7 +20,6 @@ export const formatPrecipitationsIcon = icon => {
   }
 };
 
-export const getLsv = value => {
-  const activeLanguage = window.navigator.language.split('-')[0];
-  return value[activeLanguage];
+export const getNavigatorLanguage = () => {
+  return window.navigator.language.split('-')[0];
 };

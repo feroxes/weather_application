@@ -1,6 +1,7 @@
 export const INIT_APP = 'INIT_APP';
 export const SET_APP_STATE = 'SET_APP_STATE';
 export const SET_SELECTED_CITY = 'SET_SELECTED_CITY';
+export const SET_ACTIVE_LANGUAGE = 'SET_ACTIVE_LANGUAGE';
 
 export const SET_DAY_TIME = 'SET_DAY_TIME';
 

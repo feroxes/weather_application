@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useLsv } from '../../custom-hooks/useLsv.js';
+
 import cities from 'cities.json';
 
 import { setSelectedCity } from '../../actions/app';
 
 import { Lsv } from '../../Lsv.js';
-import { getLsv } from '../../helper/helper.js';
 
 import { BlurBackgroundStyled } from '../../assets/styles/App.js';
 import {
@@ -39,9 +40,9 @@ export const SearchScreen = ({ setSlideIndex }) => {
   return (
     <BlurBackgroundStyled>
       <SearchScreenWrapper>
-        <SearchScreenHeaderStyled>{getLsv(Lsv.searchScreen.header)}</SearchScreenHeaderStyled>
+        <SearchScreenHeaderStyled>{useLsv(Lsv.searchScreen.header)}</SearchScreenHeaderStyled>
         <SearchFieldStyled
-          placeholder={getLsv(Lsv.searchScreen.enterCity)}
+          placeholder={useLsv(Lsv.searchScreen.enterCity)}
           value={searchField}
           onChange={e => setSearchFieldStyled(e.target.value.toLowerCase())}
           type="text"
@@ -69,7 +70,7 @@ export const SearchScreen = ({ setSlideIndex }) => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        {getLsv(Lsv.searchScreen.poweredBy)}
+        {useLsv(Lsv.searchScreen.poweredBy)}
       </PoweredStyled>
     </BlurBackgroundStyled>
   );
