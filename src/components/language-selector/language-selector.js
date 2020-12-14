@@ -8,6 +8,7 @@ import { LanguageSelectorStyled } from './styled.js';
 
 export const LanguageSelector = () => {
   const supportedLanguages = useSelector(state => state.app.supportedLanguages);
+  const activeLanguage = useSelector(state => state.app.activeLanguage);
   const dispatch = useDispatch();
 
   const handleLanguageChange = e => {
@@ -18,7 +19,7 @@ export const LanguageSelector = () => {
     <LanguageSelectorStyled name="languageSelector" onChange={handleLanguageChange}>
       {supportedLanguages.map((language, key) => {
         return (
-          <option value={language.code} key={key}>
+          <option value={language.code} key={key} selected={language.code === activeLanguage}>
             {/* eslint-disable-next-line react-hooks/rules-of-hooks */}
             {useLsv(language.name)}
           </option>
